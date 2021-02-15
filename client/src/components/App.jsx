@@ -25,7 +25,7 @@ class App extends React.Component {
       email: '',
     };
 
-    this.handleCreateClick = this.handleCreateClick.bind(this);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleWebTitleClick = this.handleWebTitleClick.bind(this);
     this.pageFormatter = this.pageFormatter.bind(this);
     this.changeFormat = this.changeFormat.bind(this);
@@ -38,9 +38,9 @@ class App extends React.Component {
     });
   }
 
-  handleCreateClick() {
+  handleLoginClick() {
     this.setState({
-      page: 'registerUser'
+      page: 'login'
     });
   }
 
@@ -61,7 +61,7 @@ class App extends React.Component {
     if (this.state.page === 'home') {
       return <Home />
     }
-    if (this.state.page === 'registerUser') {
+    if (this.state.page === 'login') {
       return <LogIn login={this.handleUserLogin}/>
     }
     if (this.state.page === 'user-home' && this.state.email !== '') {
@@ -83,10 +83,10 @@ class App extends React.Component {
               </span>
               <section className="button-section">
                 <div className="header-button-div">
-                  {this.state.email === '' ? <button type="button" className="register-button" onClick={this.handleCreateClick}>Register</button> : null}
+                  {this.state.email === '' ? <button type="button" className="register-button">Register</button> : null}
                 </div>
                 <div className="header-button-div">
-                  {this.state.email === '' ? <button type="button" className="login-button" onClick={this.handleCreateClick}>Log In</button> : null}
+                  {this.state.email === '' ? <button type="button" className="login-button" onClick={this.handleLoginClick}>Log In</button> : null}
                 </div>
                 <div className="header-button-div">
                   {this.state.email !== '' ?

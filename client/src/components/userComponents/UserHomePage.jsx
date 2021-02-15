@@ -35,7 +35,7 @@ let UserHomePage = (props) => {
           <div className="user-info-div">
             <span>Until: {dateFormat(data.user.schedule.until, 'dddd, mmmm dS, yyyy')}</span>
           </div>
-          <div className="user-info-div">
+          <div >
             <span>Time Zone: {data.user.schedule.timeZone}</span>
           </div>
         </section>

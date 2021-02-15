@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import JobList from '../jobs/JobList';
 import UserHomePage from './UserHomePage';
+import ScheduleForm from './ScheduleForm';
 
 class UserHome extends React.Component {
   constructor(props) {
@@ -30,6 +31,9 @@ class UserHome extends React.Component {
           <JobList />
         </section>)
     }
+    if (this.state.page === 'set-schedule') {
+      return <ScheduleForm />
+    }
   }
 
   render() {
@@ -39,7 +43,9 @@ class UserHome extends React.Component {
           <button className="uhb uhb-1" onClick={() => {
             this.changePage('home');
           }}>Home</button>
-          <button className="uhb uhb-2">Set A Schedule</button>
+          <button className="uhb uhb-2" onClick={() => {
+            this.changePage('set-schedule');
+          }}>Set A Schedule</button>
           <button className="uhb uhb-3" onClick={() => {
             this.changePage('jobs');
           }}>Jobs</button>
