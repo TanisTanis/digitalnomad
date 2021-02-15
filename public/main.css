@@ -1,0 +1,213 @@
+* {
+  font-family: Newsreader;
+}
+
+/*
+  ========================================
+  Header CSS
+  ========================================
+*/
+
+.header-div {
+  background-color: beige;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 96%;
+  padding: 30px;
+}
+
+.digital-nomad-title:hover, .earth:hover {
+  cursor: pointer;
+}
+
+.main-header {
+  margin-bottom: 180px;
+}
+
+.web-title {
+  font-size: 60px;
+  font-weight: bold;
+  padding: 20px 20px;
+}
+
+.button-section {
+  float: right;
+}
+
+.header-button-div {
+  margin-bottom: 5px;
+}
+
+.register-button, .login-button, .user-home-button, .logout-button {
+  border: none;
+  display: inline-block;
+  background-color: cadetblue;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.register-button:hover, .login-button:hover, .user-home-button:hover, .logout-button:hover {
+  cursor: pointer;
+  background-color: #0099cc;
+  color: white;
+}
+
+/*
+  ========================================
+  Home Page CSS
+  ========================================
+*/
+
+.search-bar {
+  width: 20%;
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.job-listings-section {
+  width: 66.66%;
+  display: inline-block;
+}
+
+/*
+  ========================================
+  Job Listing CSS
+  ========================================
+*/
+
+.job-description {
+  display: inline-block;
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.job-container {
+  padding-bottom: 10px;
+  border-bottom: 5px ridge #80ffaa;
+  width: 80%;
+}
+
+.job-title {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.job-desc-div {
+  margin-bottom: 10px;
+}
+
+.apply-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: cadetblue;
+  font-size: 15px;
+}
+
+.apply-button:hover {
+  cursor: pointer;
+  background-color: #0099cc;
+  color: white;
+}
+
+.job-listing-div {
+  margin-top: 20px;
+}
+
+/*
+  ========================================
+  Login Page CSS
+  ========================================
+*/
+
+.login-div {
+  text-align: center;
+}
+
+.login-section {
+  width: 40%;
+  display: inline-block;
+  border: 2px ridge black;
+  padding: 10px 0px;
+}
+
+.login-desc {
+  font-size: 30px;
+  text-decoration: underline;
+}
+
+.login-desc-div {
+  margin-bottom: 20px;
+}
+
+.user-login-sec {
+  margin-right: 20px;
+}
+
+.email-input-div, .password-input-div {
+  margin-bottom: 20px;
+}
+
+/*
+  ========================================
+  User Home CSS
+  ========================================
+*/
+
+.user-home-button-bar {
+  background-color: #b3d9ff;
+  text-align: center;
+}
+
+.uhb {
+  border: none;
+  background: none;
+  font-size: 20px;
+  padding: 15px 10px;
+}
+
+.uhb:hover {
+  cursor: pointer;
+  color: darkred;
+}
+
+.uhb-1, .uhb-2 {
+  border-right: 2px solid darkred;
+}
+
+.login-joblist {
+  text-align: center;
+  width: 100%
+}
+
+/*
+  ========================================
+  User Schedule CSS
+  ========================================
+*/
+
+.main-user-info-div {
+  text-align: center;
+}
+
+.user-info-section {
+  margin-top: 20px;
+  display: inline-block;
+  width: 40%;
+}
+
+.title-schedule {
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+.title-schedule-div {
+  margin-bottom: 15px;
+}
+
+.user-info-div {
+  margin-bottom: 10px;
+}
+
