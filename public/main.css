@@ -39,7 +39,7 @@
   margin-bottom: 5px;
 }
 
-.register-button, .login-button, .user-home-button, .logout-button {
+.register-button, .login-button, .user-home-button, .logout-button, .company-home-button {
   border: none;
   display: inline-block;
   background-color: cadetblue;
@@ -48,7 +48,7 @@
   font-size: 15px;
 }
 
-.register-button:hover, .login-button:hover, .user-home-button:hover, .logout-button:hover {
+.register-button:hover, .login-button:hover, .user-home-button:hover, .logout-button:hover, .company-home-button:hover {
   cursor: pointer;
   background-color: #0099cc;
   color: white;
@@ -150,6 +150,20 @@
   margin-bottom: 20px;
 }
 
+.forgot-pass-div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgot-password {
+  color: deepskyblue;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /*
   ========================================
   User Home CSS
@@ -211,3 +225,32 @@
   margin-bottom: 10px;
 }
 
+/*
+  ========================================
+  Schedule Form CSS
+  ========================================
+*/
+
+.schedule-form-div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.create-schedule-button {
+  border: none;
+  display: inline-block;
+  background-color: cadetblue;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.create-schedule-button:hover {
+  cursor: pointer;
+  background-color: #0099cc;
+  color: white;
+}
+
+.location-input-div, .timezone-select-div, .time-length-div {
+  margin-bottom: 15px;
+}

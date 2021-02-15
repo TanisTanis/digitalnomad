@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 let LogIn = (props) => {
 
   const [email, setEmail] = useState('');
+  const [companyEmail, setCompanyEmail] = useState('');
 
   return (
     <div className="login-div">
@@ -26,7 +27,7 @@ let LogIn = (props) => {
             <input type="password" id="user-password-input"></input>
           </div>
           <div>
-            <button type="button" onClick={() => props.login(email)}>Log In</button>
+            <button type="button" className="login-button" onClick={() => props.login(email)}>Log In</button>
           </div>
         </div>
       </section>
@@ -40,7 +41,9 @@ let LogIn = (props) => {
           <div className="email-input-div">
             <label htmlFor="company-email-input">Email</label>
             {' '}
-            <input type="text" id="company-email-input"></input>
+            <input type="text" id="company-email-input" onChange={(e) => {
+              setCompanyEmail(e.target.value);
+            }}></input>
           </div>
           <div className="password-input-div">
             <label htmlFor="company-password-input">Password</label>
@@ -48,10 +51,13 @@ let LogIn = (props) => {
             <input type="password" id="company-password-input"></input>
           </div>
           <div>
-            <button>Log In</button>
+            <button type="button" className="login-button" onClick={() => props.companyLogin(companyEmail)}>Log In</button>
           </div>
         </div>
       </section>
+      <div className="forgot-pass-div">
+        <span className="forgot-password">Forgot Your Password?</span>
+      </div>
     </div>
   )
 }

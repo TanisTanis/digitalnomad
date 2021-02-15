@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   currentlyEmployed: String,
+  company: String,
   schedule: {
     location: String,
     timeZone: String,
@@ -30,7 +31,24 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('user', userSchema);
 
+const companySchema = new mongoose.Schema({
+  name: String,
+  companyEmail: String,
+  employees: [
+    {
+      firstName: String,
+      lastName: String,
+      location: String,
+      email: String,
+      phone: String,
+    }
+  ],
+});
+
+const Company = mongoose.model('company', companySchema);
+
 module.exports = {
   Job,
   User,
+  Company
 };

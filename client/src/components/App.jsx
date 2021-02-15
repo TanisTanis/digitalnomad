@@ -4,6 +4,7 @@ import Home from './Home';
 import LogIn from './LogIn';
 import EarthPic from './EarthPic';
 import UserHome from './userComponents/UserHome';
+import CompanyHome from './companyComponents/CompanyHome';
 
 const link = createHttpLink({
   uri: '/graphql',
@@ -23,25 +24,13 @@ class App extends React.Component {
     this.state = {
       page: 'home',
       email: '',
+      companyEmail: '',
     };
 
-    this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.handleWebTitleClick = this.handleWebTitleClick.bind(this);
     this.pageFormatter = this.pageFormatter.bind(this);
     this.changeFormat = this.changeFormat.bind(this);
     this.handleUserLogin = this.handleUserLogin.bind(this);
-  }
-
-  handleWebTitleClick() {
-    this.setState({
-      page: 'home',
-    });
-  }
-
-  handleLoginClick() {
-    this.setState({
-      page: 'login'
-    });
+    this.handleCompanyLogin = this.handleCompanyLogin.bind(this);
   }
 
   handleUserLogin(email) {
@@ -49,6 +38,13 @@ class App extends React.Component {
       page: 'user-home',
       email: email,
     })
+  }
+
+  handleCompanyLogin(email) {
+    this.setState({
+      page: 'company-home',
+      companyEmail: email,
+    });
   }
 
   changeFormat(format) {
@@ -62,10 +58,13 @@ class App extends React.Component {
       return <Home />
     }
     if (this.state.page === 'login') {
-      return <LogIn login={this.handleUserLogin}/>
+      return <LogIn login={this.handleUserLogin} companyLogin={this.handleCompanyLogin}/>
     }
     if (this.state.page === 'user-home' && this.state.email !== '') {
       return <UserHome email={this.state.email}/>
+    }
+    if (this.state.page === 'company-home' && this.state.companyEmail !== '') {
+      return <CompanyHome email={this.state.companyEmail}/>
     }
 
   }
@@ -76,17 +75,29 @@ class App extends React.Component {
         <div className="main-div">
           <header className="main-header">
             <div className="header-div">
-              <span className="earth" onClick={this.handleWebTitleClick}><EarthPic /></span>
+              <span className="earth" onClick={() => {
+                this.setState({
+                  page: 'home',
+                })
+              }}><EarthPic /></span>
               <span className="web-title">
                 {' '}
-                <span className="digital-nomad-title" onClick={this.handleWebTitleClick}>Digital Nomad</span>
+                <span className="digital-nomad-title" onClick={() => {
+                  this.setState({
+                    page: 'home',
+                  });
+                }}>Digital Nomad</span>
               </span>
               <section className="button-section">
                 <div className="header-button-div">
-                  {this.state.email === '' ? <button type="button" className="register-button">Register</button> : null}
+                  {(this.state.email === '' && this.state.companyEmail === '') ? <button type="button" className="register-button">Register</button> : null}
                 </div>
                 <div className="header-button-div">
-                  {this.state.email === '' ? <button type="button" className="login-button" onClick={this.handleLoginClick}>Log In</button> : null}
+                  {(this.state.email === '' && this.state.companyEmail === '') ? <button type="button" className="login-button" onClick={() => {
+                    this.setState({
+                      page: 'login',
+                    });
+                  }}>Log In</button> : null}
                 </div>
                 <div className="header-button-div">
                   {this.state.email !== '' ?
@@ -95,11 +106,18 @@ class App extends React.Component {
                   }}>User Home</button> : null}
                 </div>
                 <div className="header-button-div">
-                  {this.state.email !== '' ?
+                  {this.state.companyEmail !== '' ?
+                    <button className="company-home-button" onClick={() => {
+                      this.changeFormat('company-home');
+                    }}>Company Home</button> : null}
+                </div>
+                <div className="header-button-div">
+                  {(this.state.email !== '' || this.state.companyEmail !== '') ?
                   <button className="logout-button" onClick={() => {
                     this.setState({
                       page: 'home',
-                      email: ''
+                      email: '',
+                      companyEmail: '',
                     });
                   }}>Log Out</button> : null}
                 </div>
