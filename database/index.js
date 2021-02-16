@@ -12,6 +12,7 @@ const jobSchema = new mongoose.Schema({
   location: String,
   remote: String,
   payRange: String,
+  description: String,
 });
 
 const Job = mongoose.model('job', jobSchema);

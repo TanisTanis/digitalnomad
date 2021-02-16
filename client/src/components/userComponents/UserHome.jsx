@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import JobList from '../jobs/JobList';
+import Home from '../Home';
 import UserHomePage from './UserHomePage';
 import ScheduleForm from './ScheduleForm';
 
@@ -28,7 +28,7 @@ class UserHome extends React.Component {
     }
     if (this.state.page === 'jobs') {
       return(<section className="login-joblist">
-          <JobList />
+          <Home />
         </section>)
     }
     if (this.state.page === 'set-schedule') {

@@ -9,6 +9,8 @@ const typeDefs = gql`
     hello: String!
     jobs: [Job]!
     user(email: String!): User!
+    company(companyEmail: String!): Company!
+    job(name: String!): [Job]!
   }
 
   type Job {
@@ -31,6 +33,20 @@ const typeDefs = gql`
     location: String
     timeZone: String
     until: Date
+  }
+
+  type Company {
+    name: String!
+    companyEmail: String!
+    employees: [Employee]!
+  }
+
+  type Employee {
+    firstName: String!
+    lastName: String!
+    location: String!
+    email: String!
+    phone: String!
   }
 
 `;

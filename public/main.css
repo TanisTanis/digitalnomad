@@ -39,7 +39,7 @@
   margin-bottom: 5px;
 }
 
-.register-button, .login-button, .user-home-button, .logout-button, .company-home-button {
+.register-button, .login-button, .user-home-button, .logout-button, .company-home-button, .contact-button, .create-posting {
   border: none;
   display: inline-block;
   background-color: cadetblue;
@@ -48,7 +48,7 @@
   font-size: 15px;
 }
 
-.register-button:hover, .login-button:hover, .user-home-button:hover, .logout-button:hover, .company-home-button:hover {
+.register-button:hover, .login-button:hover, .user-home-button:hover, .logout-button:hover, .company-home-button:hover, .contact-button:hover, .create-posting:hover {
   cursor: pointer;
   background-color: #0099cc;
   color: white;
@@ -60,15 +60,59 @@
   ========================================
 */
 
+.job-listings-section {
+  width: 66.66%;
+  display: inline-block;
+}
+
+/*
+  ========================================
+  Search Bar CSS
+  ========================================
+*/
+
 .search-bar {
   width: 20%;
   display: inline-block;
   margin-left: 50px;
+  vertical-align: top;
 }
 
-.job-listings-section {
-  width: 66.66%;
-  display: inline-block;
+.sbt {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.sb-div {
+  margin-bottom: 15px;
+}
+
+.search-div-m {
+  margin-bottom: 10px;
+}
+
+.search-div-n {
+  margin-bottom: 8px;
+}
+
+.search-div-b {
+  margin-left: 45px;
+}
+
+.search-button {
+  background-color: #a3a3c2;
+  padding: 7px 5px;
+  border: none;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.search-button:hover {
+  font-weight: bold;
+  background-color: black;
+  color: whitesmoke;
+  cursor: pointer;
 }
 
 /*
@@ -85,7 +129,8 @@
 
 .job-container {
   padding-bottom: 10px;
-  border-bottom: 5px ridge #80ffaa;
+  /* border-bottom: 5px ridge #80ffaa; */
+  border-bottom: 5px ridge goldenrod;
   width: 80%;
 }
 
@@ -170,7 +215,7 @@
   ========================================
 */
 
-.user-home-button-bar {
+.user-home-button-bar, .company-home-button-bar {
   background-color: #b3d9ff;
   text-align: center;
 }
@@ -192,8 +237,7 @@
 }
 
 .login-joblist {
-  text-align: center;
-  width: 100%
+  margin-top: 30px;
 }
 
 /*
@@ -234,6 +278,7 @@
 .schedule-form-div {
   text-align: center;
   margin-top: 20px;
+  font-size: 20px;
 }
 
 .create-schedule-button {
@@ -252,5 +297,118 @@
 }
 
 .location-input-div, .timezone-select-div, .time-length-div {
+  margin-bottom: 15px;
+}
+
+#timeZone-select, #length-select, #dwmy-select, #location-input {
+  font-size: 16px;
+  line-height: 1.3;
+  padding: .6em 1.4em .5em .8em;
+  border-radius: .5em;
+}
+
+/*
+  ========================================
+  Company Home CSS
+  ========================================
+*/
+
+.chb-4, .chb-3{
+  border-left: 2px solid darkred;
+}
+
+.company-home-page {
+  text-align: center;
+}
+
+.company-name {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.cnd {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.ced {
+  margin-bottom: 25px;
+}
+
+/*
+  ========================================
+  Employee List CSS
+  ========================================
+*/
+
+.employee-list-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.employee-name-section, .employee-contact-section {
+  width: 30%;
+  display: inline-block;
+}
+
+.contact-button-section {
+  width: 20%;
+  display: inline-block;
+}
+
+.employee-div {
+  margin-bottom: 40px;
+}
+
+.cit {
+  text-decoration: underline;
+}
+
+.eid {
+  margin-bottom: 10px;
+}
+
+.employee-name {
+  font-weight: bold;
+}
+
+/*
+  ========================================
+  Company Job List CSS
+  ========================================
+*/
+
+.company-joblist-container {
+  text-align: center;
+}
+
+.company-job-container {
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 5px ridge #80ffaa;
+}
+
+.cjl {
+  display: inline-block;
+  width: 20%;
+}
+
+/*
+  ========================================
+  Job Posting CSS
+  ========================================
+*/
+
+#jpd {
+  resize: none;
+}
+
+.job-posting-div {
+  text-align: left;
+  margin-top: 40px;
+  margin-left: 500px;
+}
+
+.jp-div {
   margin-bottom: 15px;
 }

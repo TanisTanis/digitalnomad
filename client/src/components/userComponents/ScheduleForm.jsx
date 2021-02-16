@@ -154,7 +154,7 @@ const ScheduleForm = (props) => {
             <option value="30">30</option>
           </select>
           {' '}
-          <select defaultValue="day(s)" onChange={(e) => {
+          <select defaultValue="day(s)" id="dwmy-select" onChange={(e) => {
             setTime(e.target.value);
           }}>
             <option value="day(s)">day(s)</option>

@@ -1,47 +1,49 @@
 const { Job, User, Company } = require('./index');
+const faker = require('faker');
 
 
-const newCompany = {
-  name: 'Hack Reactor',
-  companyEmail: 'hackreactor@hackreactor.com',
-  employees: [
-    {
-      firstName: 'Josh',
-      lastName: 'Elder',
-      location: 'Any brewery in Seattle',
-      email: 'jelder@gmail.com',
-      phone: '(760) 215 4056'
-    },
-    {
-      firstName: 'Katie',
-      lastName: 'Papke',
-      location: 'Seattle, WA',
-      email: 'kpapke@gmail.com',
-      phone: '(760) 300 3333'
-    }
-  ]
-}
-
-Company.create(newCompany)
-  .then(() => {
-    console.log('Company created');
-  })
-
-// const newJob = {
-//   title: 'Front End Developer',
-//   company: 'Starbucks',
-//   location: 'Santa Fe, NM',
-//   remote: 'no',
-//   payRange: '10M - 50M'
+// const newCompany = {
+//   name: 'Hack Reactor',
+//   companyEmail: 'hackreactor@hackreactor.com',
+//   employees: [
+//     {
+//       firstName: 'Josh',
+//       lastName: 'Elder',
+//       location: 'Any brewery in Seattle',
+//       email: 'jelder@gmail.com',
+//       phone: '(760) 215 4056'
+//     },
+//     {
+//       firstName: 'Katie',
+//       lastName: 'Papke',
+//       location: 'Seattle, WA',
+//       email: 'kpapke@gmail.com',
+//       phone: '(760) 300 3333'
+//     }
+//   ]
 // }
 
-// Job.create(newJob)
+// Company.create(newCompany)
 //   .then(() => {
-//     console.log('Job Added');
+//     console.log('Company created');
 //   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+
+const newJob = {
+  title: 'Technical Lead',
+  company: 'Hack Reactor',
+  location: 'Denver, CO',
+  remote: 'yes',
+  payRange: '90K - 110K',
+  description: faker.lorem.paragraphs()
+}
+
+Job.create(newJob)
+  .then(() => {
+    console.log('Job Added');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // let date = new Date()
 // date = date.setDate(date.getDate() + 14);
