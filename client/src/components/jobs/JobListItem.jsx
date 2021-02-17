@@ -21,10 +21,10 @@ let JobListItem = (props) => {
             <span>Remote: {props.job.remote}</span>
           </div>
           <div className="job-desc-div">
-            <span>Pay Range: {props.job.payRange}</span>
+            <span>Job Type: {props.job.type}</span>
           </div>
         </section>
-        <section className="job-description">
+        <section className="job-description jpbs">
           <button className="apply-button">See Details</button>
         </section>
 

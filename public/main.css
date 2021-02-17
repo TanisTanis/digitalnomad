@@ -39,7 +39,7 @@
   margin-bottom: 5px;
 }
 
-.register-button, .login-button, .user-home-button, .logout-button, .company-home-button, .contact-button, .create-posting {
+.register-button, .login-button, .user-home-button, .logout-button, .company-home-button, .contact-button, .create-posting, .eb {
   border: none;
   display: inline-block;
   background-color: cadetblue;
@@ -48,7 +48,7 @@
   font-size: 15px;
 }
 
-.register-button:hover, .login-button:hover, .user-home-button:hover, .logout-button:hover, .company-home-button:hover, .contact-button:hover, .create-posting:hover {
+.register-button:hover, .login-button:hover, .user-home-button:hover, .logout-button:hover, .company-home-button:hover, .contact-button:hover, .create-posting:hover, .eb:hover {
   cursor: pointer;
   background-color: #0099cc;
   color: white;
@@ -91,12 +91,20 @@
   margin-bottom: 10px;
 }
 
-.search-div-n {
+.search-div-n, .search-div-c  {
   margin-bottom: 8px;
 }
 
 .search-div-b {
   margin-left: 45px;
+}
+
+.search-div-e {
+  margin-bottom: 18px;
+}
+
+.search-div-s {
+  margin-bottom: 15px;
 }
 
 .search-button {
@@ -240,6 +248,22 @@
   margin-top: 30px;
 }
 
+.user-description-section {
+  display: inline-block;
+  width: 40%;
+}
+
+.user-info-section {
+  margin-top: 20px;
+  display: inline-block;
+  width: 30%;
+}
+
+.ebdiv {
+  text-align: center;
+  margin-top: 30px;
+}
+
 /*
   ========================================
   User Schedule CSS
@@ -247,16 +271,12 @@
 */
 
 .main-user-info-div {
-  text-align: center;
-}
-
-.user-info-section {
   margin-top: 20px;
-  display: inline-block;
-  width: 40%;
+  text-align: center;
+  vertical-align: top;
 }
 
-.title-schedule {
+.title-schedule, .title-user {
   text-decoration: underline;
   font-size: 20px;
 }
@@ -406,9 +426,16 @@
 .job-posting-div {
   text-align: left;
   margin-top: 40px;
-  margin-left: 500px;
+  margin-left: 450px;
 }
 
 .jp-div {
   margin-bottom: 15px;
+}
+
+#jpt, #jpl, #jppr, #jpd {
+  font-size: 16px;
+  line-height: 1.3;
+  padding: .6em 1.4em .5em .8em;
+  border-radius: .5em;
 }

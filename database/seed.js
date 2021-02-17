@@ -11,7 +11,7 @@ const faker = require('faker');
 //       lastName: 'Elder',
 //       location: 'Any brewery in Seattle',
 //       email: 'jelder@gmail.com',
-//       phone: '(760) 215 4056'
+//       phone: 'HAPPY BIRTHDAY JOSH!!'
 //     },
 //     {
 //       firstName: 'Katie',
@@ -33,7 +33,8 @@ const newJob = {
   company: 'Hack Reactor',
   location: 'Denver, CO',
   remote: 'yes',
-  payRange: '90K - 110K',
+  type: 'Full Time',
+  payRange: '0K',
   description: faker.lorem.paragraphs()
 }
 
@@ -52,6 +53,7 @@ Job.create(newJob)
 //   email: 'tkiel12@gmail.com',
 //   firstName: 'Tanis',
 //   lastName: 'Kiel',
+//   phone: '(760) 215 4056',
 //   currentlyEmployed: 'yes',
 //   company: 'Hack Reactor',
 //   schedule: {

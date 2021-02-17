@@ -11,6 +11,8 @@ const getJobsQuery = gql`
       company
       remote
       payRange
+      type
+      description
     }
   }
 `;

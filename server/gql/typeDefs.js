@@ -18,14 +18,18 @@ const typeDefs = gql`
     company: String!
     location: String!
     remote: String!
+    type: String!
     payRange: String!
+    description: String!
   }
 
   type User {
     email: String
+    phone: String
     firstName: String
     lastName: String
     currentlyEmployed: String
+    company: String
     schedule: Schedule
   }
 

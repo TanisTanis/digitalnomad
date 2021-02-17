@@ -5,6 +5,7 @@ const JobPosting = (props) => {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [remote, setRemote] = useState('no');
+  const [jobType, setJobType] = useState('');
   const [pay, setPay] = useState('');
   const [description, setDescription] = useState('');
 
@@ -41,6 +42,30 @@ const JobPosting = (props) => {
           </label>
         </div>
         <div className="jp-div">
+            <label>Job Type:</label>
+            {' '}
+            <label>
+              <input type="radio" name="job-type-select" value="Full Time" onChange={(e) => {
+                setJobType(e.target.value);
+              }}></input>
+              Full Time
+            </label>
+            {' '}
+            <label>
+              <input type="radio" name="job-type-select" value="Part Time" onChange={(e) => {
+                setJobType(e.target.value);
+              }}></input>
+              Part Time
+            </label>
+            {' '}
+            <label>
+              <input type="radio" name="job-type-select" value="Short Term" onChange={(e) => {
+                setJobType(e.target.value);
+              }}></input>
+              Short Term
+            </label>
+        </div>
+        <div className="jp-div">
           <label htmlFor="jppr">Pay Range</label>
           {' '}
           <input type="text" id="jppr" placeholder="~90K" onChange={(e) => {
@@ -51,7 +76,7 @@ const JobPosting = (props) => {
           <div>
             <label htmlFor="jpd">Description</label>
           </div>
-          <div>
+          <div className="jp-div">
             <textarea id="jpd" rows="10" cols="50" onChange={(e) => {
               setDescription(e.target.value);
             }}></textarea>

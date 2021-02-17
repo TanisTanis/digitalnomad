@@ -11,6 +11,7 @@ const jobSchema = new mongoose.Schema({
   company: String,
   location: String,
   remote: String,
+  type: String,
   payRange: String,
   description: String,
 });
@@ -23,6 +24,7 @@ const userSchema = new mongoose.Schema({
   lastName: String,
   currentlyEmployed: String,
   company: String,
+  phone: String,
   schedule: {
     location: String,
     timeZone: String,

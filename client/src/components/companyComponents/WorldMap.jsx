@@ -2,7 +2,7 @@ import React from 'react';
 
 const WorldMap = () => {
   return (
-    <div>
+    <div className="world-map-svg">
       <svg id="world" xmlns="http://www.w3.org/2000/svg" viewBox="32.3 44.8 897.1 455.3" height="230">
         <g id="outline" data-name="outline">
           <polygon fill="none" stroke="#2D2D2D" strokeMiterlimit="10" points="255.8,99.6 256.9,96.7 250.1,93.8 244.5,98.5 	" />

@@ -5,6 +5,19 @@ const ScheduleForm = (props) => {
   const [timeZone, setTimeZone] = useState('UTC -8H (PST)');
   const [length, setLength] = useState('1');
   const [time, setTime] = useState('day(s)');
+  const [indefinitely, setIndefinitely] = useState(false);
+
+  function Indefinitely(e) {
+    if (!indefinitely) {
+      document.getElementById('length-select').setAttribute('disabled', true);
+      document.getElementById('dwmy-select').setAttribute('disabled', true);
+    }
+    if (indefinitely) {
+      document.getElementById('length-select').removeAttribute('disabled');
+      document.getElementById('dwmy-select').removeAttribute('disabled');
+    }
+    setIndefinitely(!indefinitely);
+  }
 
 
   return(
@@ -162,6 +175,11 @@ const ScheduleForm = (props) => {
             <option value="month(s)">month(s)</option>
             <option value="year(s)">year(s)</option>
           </select>
+          {' '}
+          <label>
+            <input type="checkbox" onChange={Indefinitely}></input>
+            Indefinitely
+          </label>
         </div>
         <div>
           <button type="button" className="create-schedule-button">Create</button>

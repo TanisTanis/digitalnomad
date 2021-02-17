@@ -9,6 +9,8 @@ let UserHomePage = (props) => {
       user(email: "${props.email}") {
         firstName
         lastName
+        phone
+        company
         schedule {
           location
           timeZone
@@ -39,6 +41,26 @@ let UserHomePage = (props) => {
             <span>Time Zone: {data.user.schedule.timeZone}</span>
           </div>
         </section>
+        <section className="user-description-section">
+          <div className="title-schedule-div">
+            <span className="title-user">User Information</span>
+          </div>
+          <div className="user-info-div">
+            <span className="full-name">Full Name: {data.user.firstName} {data.user.lastName}</span>
+          </div>
+          <div className="user-info-div">
+            <span>Email: {props.email}</span>
+          </div>
+          <div className="user-info-div">
+            <span>Phone: {data.user.phone}</span>
+          </div>
+          <div className="user-info-div">
+            <span>Employed At: {data.user.company}</span>
+          </div>
+        </section>
+        <div className="ebdiv">
+          <button className="eb">Edit</button>
+        </div>
       </div>
     )
   }

@@ -4,7 +4,6 @@ import WorldMap from './WorldMap';
 
 const CompanyHomePage = (props) => {
 
-
   return (
     <div className="company-home-page">
       <div className="cnd">
