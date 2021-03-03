@@ -13,6 +13,19 @@ A single-page web application for both individuals and companies. Users can sear
 
 ### Installation
 
-Clone the repo
+Clone the repo:
 <pre>git clone https://github.com/TanisTanis/digitalnomad.git</pre>
   
+Install Dependencies:
+<pre>npm install</pre>
+
+Compile React Files:
+<pre>npm run build</pre>
+
+Seed your Mongo Database:
+<pre>npm run seed</pre>
+
+Start the Server:
+<pre>npm start</pre>
+
+Now visit localhost:4000 to see the page!
