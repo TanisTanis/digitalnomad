@@ -36,10 +36,11 @@ After correctly seeding the database, you will be able to log in as some of the 
 
 Click on the Log In button in the upper right corner to go to the login page.
 
+#### Password authentication is coming soon with Auth0, but for now you can leave it blank.
+
 ### User Login
 
 To log in as a user, log in under my account:
-Password authentication is coming soon with Auth0, but for now you can leave it blank.
 <pre>
 tkiel12@gmail.com
 </pre>
