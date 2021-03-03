@@ -8,7 +8,8 @@
     "start": "node server",
     "start-dev": "nodemon server",
     "build": "webpack",
-    "build-dev": "webpack -w"
+    "build-dev": "webpack -w",
+    "seed": "node database/seed.js"
   },
   "repository": {
     "type": "git",
