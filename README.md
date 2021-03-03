@@ -29,3 +29,28 @@ Start the Server:
 <pre>npm start</pre>
 
 Now visit localhost:4000 to see the page!
+
+## Navigating the Webpage
+
+After correctly seeding the database, you will be able to log in as some of the preconfigured users and companies in the preset data.
+
+Click on the Log In button in the upper right corner to go to the login page.
+
+### User Login
+
+To log in as a user, log in under my account:
+Password authentication is coming soon with Auth0, but for now you can leave it blank.
+<pre>
+tkiel12@gmail.com
+</pre>
+
+To log in as a company, log in under Auth0's company account that you added to the database in the seed script.
+<pre>
+auth0@auth0.com
+</pre>
+
+After logging in to either option, you can log out and switch accounts using the Log Out button in the top right again.
+
+## Thank you for checking out my project!
+
+Feel free to reach out through LinkedIn or my email!
