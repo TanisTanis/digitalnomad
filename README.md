@@ -32,7 +32,7 @@ Now visit localhost:4000 to see the page!
 
 ## Navigating the Webpage
 
-After correctly seeding the database, you will be able to log in as some of the preconfigured users and companies in the preset data.
+After correctly seeding the database, you will be able to log in as some of the preconfigured users and companies.
 
 Click on the Log In button in the upper right corner to go to the login page.
 
@@ -43,6 +43,8 @@ Password authentication is coming soon with Auth0, but for now you can leave it 
 <pre>
 tkiel12@gmail.com
 </pre>
+
+### Company Login
 
 To log in as a company, log in under Auth0's company account that you added to the database in the seed script.
 <pre>
