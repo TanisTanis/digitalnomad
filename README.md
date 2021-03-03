@@ -14,5 +14,5 @@ A single-page web application for both individuals and companies. Users can sear
 ### Installation
 
 Clone the repo
-<pre>git clone https://github.com/TanisTanis/digitalnomad.git</pr>
+<pre>git clone https://github.com/TanisTanis/digitalnomad.git</pre>
   
