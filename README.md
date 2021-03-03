@@ -54,6 +54,11 @@ auth0@auth0.com
 
 After logging in to either option, you can log out and switch accounts using the Log Out button in the top right again.
 
-## Thank you for checking out my project!
+## Features I am currently working on
+
+1. Password authentication with Auth0
+2. Interactive Map on company home page with pins where remote employees are located
+
+## Thank you for checking out my application!
 
 Feel free to reach out through LinkedIn or my email!
