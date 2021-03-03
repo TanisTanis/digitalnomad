@@ -11,6 +11,17 @@ A single-page web application for both individuals and companies. Users can sear
 
 ## Getting Started
 
+### Requirements
+
+<ul>
+  <li>MongoDB
+    <ul><li>https://docs.mongodb.com/manual/installation/</li></ul>
+  </li>
+  <li>NPM/Node.js 
+    <ul><li>https://www.npmjs.com/get-npm</li></ul>
+  </li>
+</ul>
+
 ### Installation
 
 Clone the repo:
