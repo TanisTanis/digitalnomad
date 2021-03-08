@@ -24,7 +24,22 @@ let SingleListing = (props) => {
   const job = data.singleJob[0];
   return(
     <div className="sld">
-      {job.title}
+      <div className="sl-main-info">
+        <p>{job.title}</p>
+        <p>{job.company}</p>
+        <p>{job.location}</p>
+      </div>
+      <div>
+        <span><span className="jlr">Remote</span>: {job.remote}</span><span className="jljt"><span className="jlr">Job Type</span>: {job.type}</span>
+        <p>{job.payRange}</p>
+      </div>
+      <div>
+        {job.description}
+      </div>
+      <button>Apply</button>
+      <button onClick={() => {
+        props.changeFormat('home');
+      }}>Back to Jobs</button>
     </div>
   )
 }

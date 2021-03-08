@@ -71,13 +71,13 @@ class App extends React.Component {
       return <LogIn login={this.handleUserLogin} companyLogin={this.handleCompanyLogin}/>
     }
     if (this.state.page === 'user-home' && this.state.email !== '') {
-      return <UserHome email={this.state.email}/>
+      return <UserHome email={this.state.email} changeFormat={this.changeFormat}/>
     }
     if (this.state.page === 'company-home' && this.state.companyEmail !== '') {
       return <CompanyHome email={this.state.companyEmail}/>
     }
     if (this.state.page === 'single-job' && this.state.currentJob !== '') {
-      return <SingleListing id={this.state.currentJob}/>
+      return <SingleListing id={this.state.currentJob} changeFormat={this.changeFormat}/>
     }
 
   }
