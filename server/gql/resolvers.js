@@ -16,6 +16,10 @@ const resolvers = {
     job: async (_, { name }) => {
       const openJobs = await Job.find({ company: name });
       return openJobs;
+    },
+    singleJob: async (_, { id }) => {
+      const listing = await Job.find({ _id: id });
+      return listing;
     }
   },
 }

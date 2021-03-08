@@ -11,9 +11,11 @@ const typeDefs = gql`
     user(email: String!): User!
     company(companyEmail: String!): Company!
     job(name: String!): [Job]!
+    singleJob(id: String): [Job]!
   }
 
   type Job {
+    id: String!
     title: String!
     company: String!
     location: String!

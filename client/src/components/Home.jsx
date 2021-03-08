@@ -10,7 +10,7 @@ let Home = (props) => {
         <SearchBar />
       </section>
       <section className="job-listings-section">
-        <JobList />
+        <JobList handleJobSelect={props.handleJobSelect}/>
       </section>
     </div>
   )

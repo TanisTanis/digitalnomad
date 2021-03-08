@@ -25,7 +25,9 @@ let JobListItem = (props) => {
           </div>
         </section>
         <section className="job-description jpbs">
-          <button className="apply-button">See Details</button>
+          <button className="apply-button" onClick={() => {
+            props.handleJobSelect(props.id);
+          }}>See Details</button>
         </section>
 
       </section>
