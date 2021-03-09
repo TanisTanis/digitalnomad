@@ -25,9 +25,9 @@ let SingleListing = (props) => {
   return(
     <div className="sld">
       <div className="sl-main-info">
-        <p>{job.title}</p>
-        <p>{job.company}</p>
-        <p>{job.location}</p>
+        <p><span className="jlt">{job.title}</span></p>
+        <p><span>{job.company}</span></p>
+        <p><span className="jlr">Location</span>: {job.location}</p>
       </div>
       <div>
         <span><span className="jlr">Remote</span>: {job.remote}</span><span className="jljt"><span className="jlr">Job Type</span>: {job.type}</span>
@@ -36,10 +36,13 @@ let SingleListing = (props) => {
       <div>
         {job.description}
       </div>
-      <button>Apply</button>
-      <button onClick={() => {
-        props.changeFormat('home');
-      }}>Back to Jobs</button>
+      <p>
+        <button className="button-green">Apply</button>
+        {' '}
+        <button className="button-green" onClick={() => {
+          props.changeFormat('home');
+        }}>Back to Jobs</button>
+      </p>
     </div>
   )
 }
