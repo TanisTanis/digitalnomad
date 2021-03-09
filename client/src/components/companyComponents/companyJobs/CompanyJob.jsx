@@ -20,7 +20,9 @@ const CompanyJob = (props) => {
           </div>
         </section>
         <section className="job-description">
-          <button className="apply-button">View Full Posting</button>
+          <button className="apply-button" onClick={() => {
+            props.switchToSingleJob(props.id);
+          }}>View Full Posting</button>
           {' '}
           <button className="apply-button">Edit</button>
         </section>

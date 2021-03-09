@@ -7,6 +7,7 @@ const CurrentOpenings = (props) => {
   const openingsQuery = gql`
     query {
       job(name: "${props.name}") {
+        id
         title
         location
         remote
@@ -23,8 +24,8 @@ const CurrentOpenings = (props) => {
 
   return(
     <section className="company-joblist-container">
-      {data.job.map((job) => (
-        <CompanyJob job={job} />
+      {data.job.map((job, index, array) => (
+        <CompanyJob job={job} key={job + job.id} id={job.id} switchToSingleJob={props.switchToSingleJob}/>
       ))}
     </section>
   )

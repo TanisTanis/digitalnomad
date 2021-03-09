@@ -6,6 +6,7 @@ import JobListItem from './JobListItem';
 const getJobsQuery = gql`
   {
     jobs {
+      id
       title
       location
       company
@@ -28,7 +29,7 @@ let JobList = (props) => {
   return(
     <div className="job-listings-div-1">
       {data.jobs.map((job, index) => (
-        <JobListItem job={job} key={job.title + index}/>
+        <JobListItem job={job} key={job.title + index} handleJobSelect={props.handleJobSelect} id={job.id}/>
       ))}
     </div>
   );

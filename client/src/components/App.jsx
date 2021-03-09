@@ -5,6 +5,7 @@ import LogIn from './LogIn';
 import EarthPic from './EarthPic';
 import UserHome from './userComponents/UserHome';
 import CompanyHome from './companyComponents/CompanyHome';
+import SingleListing from './jobs/SingleListing';
 
 const link = createHttpLink({
   uri: '/graphql',
@@ -25,12 +26,14 @@ class App extends React.Component {
       page: 'home',
       email: '',
       companyEmail: '',
+      currentJob: '',
     };
 
     this.pageFormatter = this.pageFormatter.bind(this);
     this.changeFormat = this.changeFormat.bind(this);
     this.handleUserLogin = this.handleUserLogin.bind(this);
     this.handleCompanyLogin = this.handleCompanyLogin.bind(this);
+    this.handleJobSelect = this.handleJobSelect.bind(this);
   }
 
   handleUserLogin(email) {
@@ -47,6 +50,13 @@ class App extends React.Component {
     });
   }
 
+  handleJobSelect(jobId) {
+    this.setState({
+      page: 'single-job',
+      currentJob: jobId
+    });
+  }
+
   changeFormat(format) {
     this.setState({
       page: format,
@@ -55,16 +65,19 @@ class App extends React.Component {
 
   pageFormatter() {
     if (this.state.page === 'home') {
-      return <Home />
+      return <Home handleJobSelect={this.handleJobSelect}/>
     }
     if (this.state.page === 'login') {
       return <LogIn login={this.handleUserLogin} companyLogin={this.handleCompanyLogin}/>
     }
     if (this.state.page === 'user-home' && this.state.email !== '') {
-      return <UserHome email={this.state.email}/>
+      return <UserHome email={this.state.email} changeFormat={this.changeFormat}/>
     }
     if (this.state.page === 'company-home' && this.state.companyEmail !== '') {
       return <CompanyHome email={this.state.companyEmail}/>
+    }
+    if (this.state.page === 'single-job' && this.state.currentJob !== '') {
+      return <SingleListing id={this.state.currentJob} changeFormat={this.changeFormat}/>
     }
 
   }

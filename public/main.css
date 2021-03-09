@@ -39,7 +39,7 @@
   margin-bottom: 5px;
 }
 
-.register-button, .login-button, .user-home-button, .logout-button, .company-home-button, .contact-button, .create-posting, .eb {
+.register-button, .login-button, .user-home-button, .logout-button, .company-home-button, .contact-button, .create-posting, .eb, .button-green {
   border: none;
   display: inline-block;
   background-color: cadetblue;
@@ -48,7 +48,7 @@
   font-size: 15px;
 }
 
-.register-button:hover, .login-button:hover, .user-home-button:hover, .logout-button:hover, .company-home-button:hover, .contact-button:hover, .create-posting:hover, .eb:hover {
+.register-button:hover, .login-button:hover, .user-home-button:hover, .logout-button:hover, .company-home-button:hover, .contact-button:hover, .create-posting:hover, .eb:hover, .button-green:hover {
   cursor: pointer;
   background-color: #0099cc;
   color: white;
@@ -438,4 +438,32 @@
   line-height: 1.3;
   padding: .6em 1.4em .5em .8em;
   border-radius: .5em;
+}
+
+/*
+  ========================================
+  Single Job Posting CSS
+  ========================================
+*/
+
+.sld {
+  text-align: center;
+}
+
+.jljt {
+  margin-left: 20px;
+}
+
+.jlr {
+  text-decoration: underline;
+}
+
+.jll {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.jlt {
+  font-weight: bold;
+  font-size: 20px;
 }

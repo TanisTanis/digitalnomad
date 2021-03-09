@@ -26,11 +26,6 @@ class UserHome extends React.Component {
     if (this.state.page === 'home') {
       return <UserHomePage email={this.props.email}/>
     }
-    if (this.state.page === 'jobs') {
-      return(<section className="login-joblist">
-          <Home />
-        </section>)
-    }
     if (this.state.page === 'set-schedule') {
       return <ScheduleForm />
     }
@@ -47,7 +42,7 @@ class UserHome extends React.Component {
             this.changePage('set-schedule');
           }}>Set A Schedule</button>
           <button className="uhb uhb-3" onClick={() => {
-            this.changePage('jobs');
+            this.props.changeFormat('home');
           }}>Jobs</button>
         </div>
         {this.userPageFormatter()}
