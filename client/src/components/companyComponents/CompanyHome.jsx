@@ -4,6 +4,7 @@ import CompanyHomePage from './CompanyHomePage';
 import EmployeeList from './employees/EmployeeList';
 import CurrentOpenings from './companyJobs/CurrentOpenings';
 import JobPosting from './JobPosting';
+import CompanySingleJob from './companyJobs/CompanySingleJob';
 
 let CompanyHome = (props) => {
 
@@ -30,15 +31,28 @@ let CompanyHome = (props) => {
       return <EmployeeList employees={data.company.employees}/>
     }
     if (page === 'openings') {
-      return <CurrentOpenings name={data.company.name}/>
+      return <CurrentOpenings name={data.company.name} switchToSingleJob={switchToSingleJob} />
     }
     if (page === 'post-job') {
       return <JobPosting />
     }
+    if (page === 'single-job') {
+      return <CompanySingleJob id={job} backToJobs={backToJobs}/>
+    }
+  }
+
+  function switchToSingleJob(id) {
+    setJob(id);
+    setPage('single-job');
+  }
+
+  function backToJobs() {
+    setPage('openings');
   }
 
   const { loading, error, data } = useQuery(getCompanyQuery);
   const [page, setPage] = useState('home');
+  const [job, setJob] = useState('');
 
   if (loading) { return <p>loading...</p>}
   if (error) { return <p>{error.message}</p> }

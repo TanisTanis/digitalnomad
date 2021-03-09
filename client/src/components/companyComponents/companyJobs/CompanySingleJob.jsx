@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 
-let SingleListing = (props) => {
+const CompanySingleJob = (props) => {
 
   const jobQuery = gql`
     {
@@ -17,11 +17,13 @@ let SingleListing = (props) => {
     }
   `;
 
+
   const { loading, error, data } = useQuery(jobQuery);
 
   if (loading) { return <p>Loading...</p> }
   if (error) { return <p>{error.message}</p> }
   const job = data.singleJob[0];
+
   return(
     <div className="sld">
       <div className="sl-main-info">
@@ -40,11 +42,11 @@ let SingleListing = (props) => {
         <button className="button-green">Apply</button>
         {' '}
         <button className="button-green" onClick={() => {
-          props.changeFormat('home');
-        }}>Back to Jobs</button>
+          props.backToJobs();
+        }}>Back</button>
       </p>
     </div>
   )
 }
 
-export default SingleListing;
+export default CompanySingleJob;
