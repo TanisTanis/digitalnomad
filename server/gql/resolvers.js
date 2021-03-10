@@ -22,6 +22,12 @@ const resolvers = {
       return listing;
     }
   },
+  Mutation: {
+    addSchedule: async (_, { location, date, timeZone }) => {
+      console.log(location);
+      return 'Schedule updated successfuly!';
+    }
+  }
 }
 
 module.exports = resolvers;

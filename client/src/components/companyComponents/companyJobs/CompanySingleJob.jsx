@@ -39,11 +39,13 @@ const CompanySingleJob = (props) => {
         {job.description}
       </div>
       <p>
-        <button className="button-green">Apply</button>
-        {' '}
         <button className="button-green" onClick={() => {
           props.backToJobs();
         }}>Back</button>
+        {' '}
+        <button className="button-green">Edit</button>
+        {' '}
+        <button className="button-green">Delete</button>
       </p>
     </div>
   )

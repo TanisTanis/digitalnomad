@@ -14,6 +14,10 @@ const typeDefs = gql`
     singleJob(id: String): [Job]!
   }
 
+  type Mutation {
+    addSchedule(location: String!, date: Date!, timeZone: String!): String!
+  }
+
   type Job {
     id: String!
     title: String!

@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import { gql, useMutation } from '@apollo/client';
+
+const ADD_SCHEDULE = gql`
+  mutation addSchedule($location: String!, $date: Date!, $timeZone: String!) {
+    addSchedule(location: $location, date: $date, timeZone: $timeZone)
+  }
+`;
 
 const ScheduleForm = (props) => {
   const [location, setLocation] = useState('');
@@ -18,6 +25,10 @@ const ScheduleForm = (props) => {
     }
     setIndefinitely(!indefinitely);
   }
+
+  // function parseDate(number, timeLength) {
+
+  // }
 
 
   return(
