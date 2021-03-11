@@ -39,7 +39,8 @@ const newUser = {
   schedule: {
     location: 'San Diego',
     timeZone: 'UTC -8H (PST)',
-    until: date,
+    date: date,
+    indefinitely: false,
   }
 };
 

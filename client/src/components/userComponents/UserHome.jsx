@@ -27,7 +27,7 @@ class UserHome extends React.Component {
       return <UserHomePage email={this.props.email}/>
     }
     if (this.state.page === 'set-schedule') {
-      return <ScheduleForm />
+      return <ScheduleForm email={this.props.email}/>
     }
   }
 
