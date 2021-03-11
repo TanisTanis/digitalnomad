@@ -23,9 +23,19 @@ const resolvers = {
     }
   },
   Mutation: {
-    addSchedule: async (_, { location, date, timeZone }) => {
-      console.log(location);
-      return 'Schedule updated successfuly!';
+    addSchedule: async (_, { email, location, date, indefinitely, timeZone }) => {
+
+      console.log(date);
+
+      await User.updateOne({ email: email },
+        {schedule: {
+          location: location,
+          date: date,
+          timeZone: timeZone,
+          indefinitely: indefinitely
+        }},
+         { runValidators: true });
+      return 'Schedule updated successfully!';
     }
   }
 }

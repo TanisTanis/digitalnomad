@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
+import dateFormat from 'dateformat';
 
 const ADD_SCHEDULE = gql`
-  mutation addSchedule($location: String!, $date: Date!, $timeZone: String!) {
-    addSchedule(location: $location, date: $date, timeZone: $timeZone)
+  mutation addUserSchedule($email: String!, $location: String!, $date: Date, $indefinitely: Boolean!, $timeZone: String!) {
+    addSchedule(email: $email, location: $location, date: $date, indefinitely: $indefinitely, timeZone: $timeZone)
   }
 `;
 
@@ -13,6 +14,10 @@ const ScheduleForm = (props) => {
   const [length, setLength] = useState('1');
   const [time, setTime] = useState('day(s)');
   const [indefinitely, setIndefinitely] = useState(false);
+  const [incomplete, setIncomplete] = useState(false);
+  const [updated, setUpdated] = useState(false);
+
+  const [addSchedule, { data }] = useMutation(ADD_SCHEDULE);
 
   function Indefinitely(e) {
     if (!indefinitely) {
@@ -26,14 +31,54 @@ const ScheduleForm = (props) => {
     setIndefinitely(!indefinitely);
   }
 
-  // function parseDate(number, timeLength) {
+  function parseDate() {
+    if (!indefinitely) {
+      let newDate = new Date();
+      let dayCount = 0;
 
-  // }
+      if (time === 'day(s)') {
+        dayCount += length;
+      }
+      if (time === 'week(s)') {
+        dayCount += length * 7;
+      }
+      if (time === 'month(s)') {
+        dayCount += length * 30;
+      }
+      if (time === 'year(s)') {
+        dayCount += length * 365;
+      }
+      newDate = newDate.setDate(newDate.getDate() + dayCount);
+      // console.log(dateFormat(newDate, 'dddd, mmmm dS, yyyy'));
+      return newDate;
+    }
+  }
+
+  function scheduleSubmit() {
+
+    if (location !== '') {
+      addSchedule({ variables: { email: props.email, location: location, date: parseDate(), indefinitely: indefinitely, timeZone: timeZone } })
+        .then((res) => {
+          setUpdated(true);
+          setIncomplete(false);
+          document.getElementById('schedule-form').reset();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    if (location === '') {
+      setIncomplete(true);
+    }
+  }
 
 
   return(
     <div className="schedule-form-div">
-      <form>
+      {updated ? <p>Schedule Updated Successfully!</p> : null}
+      {incomplete ? <p className="incomplete">Please fill out the entire form before submission</p> : null}
+      <form id="schedule-form">
         <div className="location-input-div">
           <label htmlFor="location-input">Where will you be working from?</label>
           {' '}
@@ -193,7 +238,7 @@ const ScheduleForm = (props) => {
           </label>
         </div>
         <div>
-          <button type="button" className="create-schedule-button">Create</button>
+          <button type="button" className="create-schedule-button" onClick={scheduleSubmit}>Create</button>
         </div>
       </form>
     </div>

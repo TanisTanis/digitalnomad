@@ -15,7 +15,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addSchedule(location: String!, date: Date!, timeZone: String!): String!
+    addSchedule(email: String!, location: String!, date: Date, indefinitely: Boolean!, timeZone: String!): String!
   }
 
   type Job {
@@ -42,7 +42,8 @@ const typeDefs = gql`
   type Schedule {
     location: String
     timeZone: String
-    until: Date
+    date: Date
+    indefinitely: Boolean
   }
 
   type Company {

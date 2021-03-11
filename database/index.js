@@ -28,7 +28,8 @@ const userSchema = new mongoose.Schema({
   schedule: {
     location: String,
     timeZone: String,
-    until: Date
+    date: Date,
+    indefinitely: Boolean,
   }
 });
 

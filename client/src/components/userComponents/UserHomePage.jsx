@@ -14,7 +14,8 @@ let UserHomePage = (props) => {
         schedule {
           location
           timeZone
-          until
+          date
+          indefinitely
         }
       }
     }
@@ -35,7 +36,7 @@ let UserHomePage = (props) => {
             <span>Working in: {data.user.schedule.location}</span>
           </div>
           <div className="user-info-div">
-            <span>Until: {dateFormat(data.user.schedule.until, 'dddd, mmmm dS, yyyy')}</span>
+            <span>Until: {data.user.schedule.indefinitely ? 'Indefinitely' : dateFormat(data.user.schedule.date, 'dddd, mmmm dS, yyyy')}</span>
           </div>
           <div >
             <span>Time Zone: {data.user.schedule.timeZone}</span>
