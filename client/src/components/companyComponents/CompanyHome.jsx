@@ -34,7 +34,7 @@ let CompanyHome = (props) => {
       return <CurrentOpenings name={data.company.name} switchToSingleJob={switchToSingleJob} />
     }
     if (page === 'post-job') {
-      return <JobPosting />
+      return <JobPosting name={data.company.name}/>
     }
     if (page === 'single-job') {
       return <CompanySingleJob id={job} backToJobs={backToJobs}/>

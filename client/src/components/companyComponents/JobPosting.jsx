@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import { gql, useMutation } from '@apollo/client';
+
+const ADD_JOB = gql`
+  mutation addJobPosting($company: String!, $title: String!, $location: String!, $remote: String!, $type: String!, $payRange: String, $description: String!) {
+    addJob(company: $company, title: $title, location: $location, remote: $remote, type: $type, payRange: $payRange, description: $description)
+  }
+`;
 
 const JobPosting = (props) => {
 
@@ -8,10 +15,50 @@ const JobPosting = (props) => {
   const [jobType, setJobType] = useState('');
   const [pay, setPay] = useState('');
   const [description, setDescription] = useState('');
+  const [incomplete, setIncomplete] = useState(false);
+  const [jobPosted, setJobPosted] = useState(false);
+
+  const [addJob, { data }] = useMutation(ADD_JOB);
+
+  function jobCreation() {
+
+    if (completeFormCheck()) {
+      addJob({variables: {company: props.name, title: title, location: location, remote: remote, type: jobType, payRange: pay, description: description}})
+        .then(() => {
+          document.getElementById('job-form').reset();
+          setJobPosted(true);
+          setIncomplete(false);
+          fullStateReset();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setIncomplete(true);
+    }
+  }
+
+  function completeFormCheck() {
+    if (title !== '' && location !== '' && jobType !== '' && description !== '') {
+      return true;
+    }
+    return false;
+  }
+
+  function fullStateReset() {
+    setTitle('');
+    setLocation('');
+    setRemote('no');
+    setJobType('');
+    setPay('');
+    setDescription('');
+  }
 
   return(
     <div className="job-posting-div">
-      <form>
+      {incomplete ? <p className="jpi">Please Fill Out All Required Elements of the Form</p> : null}
+      {jobPosted ? <p className="jpsm">Job Post Successfull!</p> : null}
+      <form id="job-form">
         <div className="jp-div">
           <label htmlFor="jpt">Job Title</label>
           {' '}
@@ -82,7 +129,7 @@ const JobPosting = (props) => {
             }}></textarea>
           </div>
           <div className="jp-div">
-            <button type="button" class="create-posting">Create Posting</button>
+            <button type="button" className="create-posting" onClick={jobCreation}>Create Posting</button>
           </div>
         </div>
       </form>

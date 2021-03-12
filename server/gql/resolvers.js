@@ -22,7 +22,9 @@ const resolvers = {
       return listing;
     }
   },
+
   Mutation: {
+
     addSchedule: async (_, { email, location, date, indefinitely, timeZone }) => {
 
       await User.updateOne({ email: email },
@@ -34,6 +36,19 @@ const resolvers = {
         }},
          { runValidators: true });
       return 'Schedule updated successfully!';
+    },
+
+    addJob: async (_, { company, title, location, remote, type, payRange, description }) => {
+      await Job.create({
+        title: title,
+        company: company,
+        location: location,
+        remote: remote,
+        type: type,
+        payRange: payRange,
+        description: description
+      });
+      return 'Job added successfully!';
     }
   }
 }
