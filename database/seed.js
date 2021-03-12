@@ -46,7 +46,7 @@ const newUser = {
 
 const jobs = [];
 
-for (let i = 0; i < 8; i++) {
+for (let i = 0; i < 100; i++) {
 
   const newJob = {
     title: faker.name.jobTitle(),
