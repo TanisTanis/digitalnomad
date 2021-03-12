@@ -49,7 +49,6 @@ const ScheduleForm = (props) => {
         dayCount += length * 365;
       }
       newDate = newDate.setDate(newDate.getDate() + dayCount);
-      // console.log(dateFormat(newDate, 'dddd, mmmm dS, yyyy'));
       return newDate;
     }
   }

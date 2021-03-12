@@ -25,8 +25,6 @@ const resolvers = {
   Mutation: {
     addSchedule: async (_, { email, location, date, indefinitely, timeZone }) => {
 
-      console.log(date);
-
       await User.updateOne({ email: email },
         {schedule: {
           location: location,
