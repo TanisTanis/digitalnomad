@@ -40,19 +40,19 @@ let JobList = (props) => {
     setCurrentPage(selectedPage);
   }
 
-  return(
+  return (
     <div className="job-listings-div-1">
       {currentPageData}
       <ReactPaginate
-         previousLabel={"← Previous"}
-         nextLabel={"Next →"}
-         pageCount={pageCount}
-         onPageChange={handlePageClick}
-         containerClassName={"pagination"}
-         previousLinkClassName={"pagination__link"}
-         nextLinkClassName={"pagination__link"}
-         disabledClassName={"pagination__link--disabled"}
-         activeClassName={"pagination__link--active"}
+        previousLabel={"← Previous"}
+        nextLabel={"Next →"}
+        pageCount={pageCount}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination"}
+        previousLinkClassName={"pagination__link"}
+        nextLinkClassName={"pagination__link"}
+        disabledClassName={"pagination__link--disabled"}
+        activeClassName={"pagination__link--active"}
       />
     </div>
   )
