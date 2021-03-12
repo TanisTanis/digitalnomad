@@ -58,6 +58,7 @@ const JobPosting = (props) => {
     <div className="job-posting-div">
       {incomplete ? <p className="jpi">Please Fill Out All Required Elements of the Form</p> : null}
       {jobPosted ? <p className="jpsm">Job Post Successfull!</p> : null}
+      <section className="job-posting-section">
       <form id="job-form">
         <div className="jp-div">
           <label htmlFor="jpt">Job Title</label>
@@ -133,6 +134,8 @@ const JobPosting = (props) => {
           </div>
         </div>
       </form>
+
+      </section>
     </div>
   );
 }

@@ -34,7 +34,7 @@ const CompanySingleJob = (props) => {
         <span><span className="jlr">Remote</span>: {job.remote}</span><span className="jljt"><span className="jlr">Job Type</span>: {job.type}</span>
         <p>{job.payRange}</p>
       </div>
-      <div>
+      <div className="job-description-single">
         {job.description}
       </div>
       <p>

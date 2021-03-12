@@ -439,7 +439,6 @@
 .job-posting-div {
   text-align: left;
   margin-top: 40px;
-  margin-left: 450px;
 }
 
 .jp-div {
@@ -451,6 +450,11 @@
   line-height: 1.3;
   padding: .6em 1.4em .5em .8em;
   border-radius: .5em;
+}
+
+.job-posting-section {
+  margin: auto;
+  width: 40%;
 }
 
 /*
@@ -479,6 +483,13 @@
 .jlt {
   font-weight: bold;
   font-size: 20px;
+}
+
+.job-description-single {
+  margin: auto;
+  width: 60%;
+  border: 1px solid grey;
+  padding: 10px;
 }
 
 /*
