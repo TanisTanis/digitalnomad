@@ -1,24 +1,23 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 
+const GET_JOB = gql`
+  query($id: String!) {
+    singleJob(id: $id) {
+      title
+      company
+      location
+      remote
+      type
+      payRange
+      description
+    }
+  }
+`;
+
 const CompanySingleJob = (props) => {
 
-  const jobQuery = gql`
-    {
-      singleJob(id: "${props.id}") {
-        title
-        company
-        location
-        remote
-        type
-        payRange
-        description
-      }
-    }
-  `;
-
-
-  const { loading, error, data } = useQuery(jobQuery);
+  const { loading, error, data } = useQuery(GET_JOB, {variables: {id: props.id}});
 
   if (loading) { return <p>Loading...</p> }
   if (error) { return <p>{error.message}</p> }

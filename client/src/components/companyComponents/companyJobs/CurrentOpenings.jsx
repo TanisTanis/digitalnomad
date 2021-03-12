@@ -2,21 +2,21 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import CompanyJob from './CompanyJob';
 
+const GET_OPENINGS = gql`
+  query($name: String!) {
+    job(name: $name) {
+      id
+      title
+      location
+      remote
+      payRange
+    }
+  }
+`;
+
 const CurrentOpenings = (props) => {
 
-  const openingsQuery = gql`
-    query {
-      job(name: "${props.name}") {
-        id
-        title
-        location
-        remote
-        payRange
-      }
-    }
-  `;
-
-  const { loading, error, data } = useQuery(openingsQuery);
+  const { loading, error, data } = useQuery(GET_OPENINGS, {variables: {name: props.name}});
 
   if (loading) { return <p>Loading...</p>}
   if (error) { return <p>{error.message}</p>}

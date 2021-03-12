@@ -6,22 +6,22 @@ import CurrentOpenings from './companyJobs/CurrentOpenings';
 import JobPosting from './JobPosting';
 import CompanySingleJob from './companyJobs/CompanySingleJob';
 
-let CompanyHome = (props) => {
-
-  const getCompanyQuery = gql`
-    query {
-      company(companyEmail: "${props.email}") {
-        name
-        employees {
-          firstName
-          lastName
-          location
-          email
-          phone
-        }
+const GET_COMPANY = gql`
+  query($companyEmail: String!) {
+    company(companyEmail: $companyEmail) {
+      name
+      employees {
+        firstName
+        lastName
+        location
+        email
+        phone
       }
     }
-  `;
+  }
+`;
+
+let CompanyHome = (props) => {
 
   function companyPageFormatter() {
     if (page === 'home') {
@@ -50,7 +50,7 @@ let CompanyHome = (props) => {
     setPage('openings');
   }
 
-  const { loading, error, data } = useQuery(getCompanyQuery);
+  const { loading, error, data } = useQuery(GET_COMPANY, {variables: {companyEmail: props.email}});
   const [page, setPage] = useState('home');
   const [job, setJob] = useState('');
 
