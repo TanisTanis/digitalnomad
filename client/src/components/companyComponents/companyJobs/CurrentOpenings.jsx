@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import CompanyJob from './CompanyJob';
 
@@ -16,11 +16,14 @@ const GET_OPENINGS = gql`
 
 const CurrentOpenings = (props) => {
 
-  const { loading, error, data } = useQuery(GET_OPENINGS, {variables: {name: props.name}});
+  const { loading, error, data, refetch } = useQuery(GET_OPENINGS, {variables: {name: props.name}});
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   if (loading) { return <p>Loading...</p>}
   if (error) { return <p>{error.message}</p>}
-  if (data) { console.log(data) }
 
   return(
     <section className="company-joblist-container">
