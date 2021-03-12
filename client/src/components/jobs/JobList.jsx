@@ -2,7 +2,6 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import JobListItem from './JobListItem';
 
-
 const getJobsQuery = gql`
   {
     jobs {
@@ -17,7 +16,6 @@ const getJobsQuery = gql`
     }
   }
 `;
-
 
 let JobList = (props) => {
   const { loading, error, data } = useQuery(getJobsQuery);
