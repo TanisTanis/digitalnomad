@@ -64,8 +64,6 @@ let UserHomePage = (props) => {
           </div>
         </section>
         <div className="ebdiv">
-          <button className="eb" onClick={() => refetch()}>Refresh</button>
-          {' '}
           <button className="eb">Edit</button>
         </div>
       </div>
