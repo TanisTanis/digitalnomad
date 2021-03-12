@@ -63,7 +63,7 @@ for (let i = 0; i < 100; i++) {
 
 const exampleJobs = [];
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 15; i++) {
   const exampleJob = {
     title: faker.name.jobTitle(),
     company: 'Auth0',
