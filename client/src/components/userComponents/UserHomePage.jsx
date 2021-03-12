@@ -1,27 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import dateFormat from 'dateformat';
 
-let UserHomePage = (props) => {
-
-  const getUserQuery = gql`
-    query {
-      user(email: "${props.email}") {
-        firstName
-        lastName
-        phone
-        company
-        schedule {
-          location
-          timeZone
-          date
-          indefinitely
-        }
+const GET_USER = gql`
+  query($email: String!) {
+    user(email: $email) {
+      firstName
+      lastName
+      phone
+      company
+      schedule {
+        location
+        timeZone
+        date
+        indefinitely
       }
     }
-  `;
+  }
+`;
 
-  const { loading, error, data } = useQuery(getUserQuery);
+let UserHomePage = (props) => {
+
+  const { loading, error, data, refetch } = useQuery(GET_USER, {variables: {email: props.email}});
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   if (loading) { return <p>Loading...</p> }
   if (error) { return <p>{error.message}</p> }
@@ -60,6 +64,8 @@ let UserHomePage = (props) => {
           </div>
         </section>
         <div className="ebdiv">
+          <button className="eb" onClick={() => refetch()}>Refresh</button>
+          {' '}
           <button className="eb">Edit</button>
         </div>
       </div>
