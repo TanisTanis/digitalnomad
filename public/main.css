@@ -96,7 +96,7 @@
 }
 
 .search-div-b {
-  margin-left: 45px;
+  margin-left: auto;
 }
 
 .search-div-e {
@@ -105,6 +105,10 @@
 
 .search-div-s {
   margin-bottom: 15px;
+}
+
+.search-div-r {
+  margin-top: 10px;
 }
 
 .search-button {

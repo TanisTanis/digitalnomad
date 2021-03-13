@@ -20,6 +20,29 @@ const resolvers = {
     singleJob: async (_, { id }) => {
       const listing = await Job.find({ _id: id });
       return listing;
+    },
+    searchedJobs: async (_, { title, location, remote, fullTime, partTime, shortTerm }) => {
+      let jobs = await Job.find();
+
+      if (title !== '') {
+        jobs = jobs.filter(job => job.title.toLowerCase().indexOf(title.toLowerCase()) !== -1);
+      }
+      if (location !== '') {
+        jobs = jobs.filter(job => job.location.toLowerCase().indexOf(location.toLowerCase()) !== -1);
+      }
+      if (remote) {
+        jobs = jobs.filter(job => job.remote === 'yes');
+      }
+      if (!fullTime) {
+        jobs = jobs.filter(job => job.type !== 'Full Time');
+      }
+      if (!partTime) {
+        jobs = jobs.filter(job => job.type !== 'Part Time');
+      }
+      if (!shortTerm) {
+        jobs = jobs.filter(job => job.type !== 'Short Term');
+      }
+      return jobs;
     }
   },
 

@@ -12,6 +12,7 @@ const typeDefs = gql`
     company(companyEmail: String!): Company!
     job(name: String!): [Job]!
     singleJob(id: String): [Job]!
+    searchedJobs(title: String!, location: String!, remote: Boolean!, fullTime: Boolean!, partTime: Boolean!, shortTerm: Boolean!): [Job]!
   }
 
   type Mutation {

@@ -3,9 +3,9 @@ import { useQuery, gql } from '@apollo/client';
 import JobListItem from './JobListItem';
 import ReactPaginate from 'react-paginate';
 
-const getJobsQuery = gql`
-  {
-    jobs {
+const SEARCH_JOBS_QUERY = gql`
+  query($title: String!, $location: String!, $remote: Boolean!, $fullTime: Boolean!, $partTime: Boolean!, $shortTerm: Boolean!) {
+    searchedJobs(title: $title, location: $location, remote: $remote, fullTime: $fullTime, partTime: $partTime, shortTerm: $shortTerm) {
       id
       title
       location
@@ -20,28 +20,40 @@ const getJobsQuery = gql`
 
 const perPage = 10;
 
-let JobList = (props) => {
+let SearchedJobList = (props) => {
 
   const [currentPage, setCurrentPage] = useState(0);
 
-  const { loading, error, data } = useQuery(getJobsQuery);
+  const { loading, error, data } = useQuery(SEARCH_JOBS_QUERY, {variables:
+    {
+      title: props.attributes.title,
+      location: props.attributes.location,
+      remote: props.attributes.remote,
+      fullTime: props.attributes.fullTime,
+      partTime: props.attributes.partTime,
+      shortTerm: props.attributes.shortTerm
+    }});
 
   if (loading) { return <p>Loading...</p> };
   if (error) { return error.message };
 
   const offset = currentPage * perPage;
 
-  const currentPageData = data.jobs.slice(offset, offset + perPage).map((job, index) => (
+  const currentPageData = data.searchedJobs.slice(offset, offset + perPage).map((job, index) => (
     <JobListItem job={job} key={job.title + index} handleJobSelect={props.handleJobSelect} id={job.id} />
   ));
 
-  const pageCount = Math.ceil(data.jobs.length / perPage);
+  const pageCount = Math.ceil(data.searchedJobs.length / perPage);
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
   }
 
-  return (
+  if (data.searchedJobs.length === 0) {
+    return <p>No jobs matching that description.</p>
+  }
+
+  return(
     <div className="job-listings-div-1">
       {currentPageData}
       <ReactPaginate
@@ -59,4 +71,4 @@ let JobList = (props) => {
   )
 }
 
-export default JobList;
+export default SearchedJobList;
