@@ -399,6 +399,14 @@
   font-weight: bold;
 }
 
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+.margin-top {
+  margin-top: 30px;
+}
+
 /*
   ========================================
   Company Job List CSS
@@ -433,11 +441,13 @@
 .jpsm {
   color: green;
   font-size: 20px;
+  text-align: center;
 }
 
 .jpi {
   color: red;
   font-size: 20px;
+  text-align: center;
 }
 
 .job-posting-div {
@@ -459,6 +469,10 @@
 .job-posting-section {
   margin: auto;
   width: 40%;
+}
+
+.spacing-right {
+  margin-right: 15px;
 }
 
 /*
