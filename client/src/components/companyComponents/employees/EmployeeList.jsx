@@ -42,7 +42,7 @@ const EmployeeList = (props) => {
 
   return(
     <div className="employee-list-container">
-      <div className="search-employees-div">
+      <div className="margin-bottom">
         <span className="spacing-right">Search Employees:</span>
         <label htmlFor="eni">Name</label>
         <input type="text" id="eni" className="spacing-right" onChange={(e) => {

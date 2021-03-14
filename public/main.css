@@ -399,8 +399,12 @@
   font-weight: bold;
 }
 
-.search-employees-div {
+.margin-bottom {
   margin-bottom: 20px;
+}
+
+.margin-top {
+  margin-top: 30px;
 }
 
 /*
