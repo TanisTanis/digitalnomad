@@ -15,9 +15,29 @@ const GET_OPENINGS = gql`
   }
 `;
 
-const perPage = 10;
+interface Props {
+  name: string
+  switchToSingleJob: Function
+}
 
-const CurrentOpenings = (props) => {
+interface Job {
+  id: string
+  title: string
+  company: string
+  location: string
+  remote: boolean
+  type: string
+  payRange: string
+  description: string
+}
+
+interface Page {
+  selected: number
+}
+
+const perPage: number = 10;
+
+const CurrentOpenings: React.FC<Props> = (props) => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [title, setTitle] = useState('');
@@ -33,25 +53,25 @@ const CurrentOpenings = (props) => {
   if (loading) { return <p>Loading...</p> }
   if (error) { return <p>{error.message}</p> }
 
-  const offset = currentPage * perPage;
+  const offset: number = currentPage * perPage;
 
-  const currentPageData = data.job.length >= 1 ? jobSearcher().slice(offset, offset + perPage).map((job, index, array) => (
+  const currentPageData = data.job.length >= 1 ? jobSearcher().slice(offset, offset + perPage).map((job: Job) => (
     <CompanyJob job={job} key={job + job.id} id={job.id} switchToSingleJob={props.switchToSingleJob} />
   )) : <p>No employees matching this description</p>;
 
   const pageCount = Math.ceil(data.job.length / perPage);
 
-  function handlePageClick({ selected: selectedPage }) {
+  function handlePageClick({ selected: selectedPage }: Page): void {
     setCurrentPage(selectedPage);
   }
 
-  function jobSearcher() {
+  function jobSearcher(): Job[] {
     let jobs = data.job;
     if (title !== '') {
-      jobs = jobs.filter(job => job.title.toLowerCase().indexOf(title.toLowerCase()) !== -1);
+      jobs = jobs.filter((job: Job) => job.title.toLowerCase().indexOf(title.toLowerCase()) !== -1);
     }
     if (location !== '') {
-      jobs = jobs.filter(job => job.location.toLowerCase().indexOf(location.toLowerCase()) !== -1);
+      jobs = jobs.filter((job: Job) => job.location.toLowerCase().indexOf(location.toLowerCase()) !== -1);
     }
     return jobs;
   }
@@ -81,6 +101,8 @@ const CurrentOpenings = (props) => {
           nextLinkClassName={"pagination__link"}
           disabledClassName={"pagination__link--disabled"}
           activeClassName={"pagination__link--active"}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={3}
         />
       </div>
     </section>

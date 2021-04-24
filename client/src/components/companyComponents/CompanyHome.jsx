@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import CompanyHomePage from './CompanyHomePage';
 import EmployeeList from './employees/EmployeeList';
-import CurrentOpenings from './companyJobs/CurrentOpenings';
+import CurrentOpenings from './companyJobs/CurrentOpenings.tsx';
 import JobPosting from './JobPosting';
 import CompanySingleJob from './companyJobs/CompanySingleJob.tsx';
 
