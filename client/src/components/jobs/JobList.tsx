@@ -18,9 +18,28 @@ const getJobsQuery = gql`
   }
 `;
 
-const perPage = 10;
+const perPage: number = 10;
 
-let JobList = (props) => {
+interface Props {
+  handleJobSelect: Function
+}
+
+interface Job {
+  company: string
+  description: string
+  id: string
+  location: string
+  payRange: string
+  remote: string
+  title: string
+  type: string
+}
+
+interface Page {
+  selected: number
+}
+
+const JobList: React.FC<Props> = (props) => {
 
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -29,15 +48,15 @@ let JobList = (props) => {
   if (loading) { return <p>Loading...</p> };
   if (error) { return error.message };
 
-  const offset = currentPage * perPage;
+  const offset: number = currentPage * perPage;
 
-  const currentPageData = data.jobs.slice(offset, offset + perPage).map((job, index) => (
-    <JobListItem job={job} key={job.title + index} handleJobSelect={props.handleJobSelect} id={job.id} />
+  const currentPageData = data.jobs.slice(offset, offset + perPage).map((job: Job, index: number) => (
+      <JobListItem job={job} key={job.title + index} handleJobSelect={props.handleJobSelect} id={job.id} />
   ));
 
-  const pageCount = Math.ceil(data.jobs.length / perPage);
+  const pageCount: number = Math.ceil(data.jobs.length / perPage);
 
-  function handlePageClick({ selected: selectedPage }) {
+  function handlePageClick({ selected: selectedPage }: Page): void {
     setCurrentPage(selectedPage);
   }
 
@@ -54,6 +73,8 @@ let JobList = (props) => {
         nextLinkClassName={"pagination__link"}
         disabledClassName={"pagination__link--disabled"}
         activeClassName={"pagination__link--active"}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={3}
       />
     </div>
   )

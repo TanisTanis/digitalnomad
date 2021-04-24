@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import JobList from './jobs/JobList';
-import SearchedJobList from './jobs/SearchedJobList';
+import JobList from './jobs/JobList.tsx';
+import SearchedJobList from './jobs/SearchedJobList.tsx';
 
 let Home = (props) => {
 

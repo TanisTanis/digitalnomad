@@ -18,9 +18,38 @@ const SEARCH_JOBS_QUERY = gql`
   }
 `;
 
-const perPage = 10;
+interface Job {
+  company: string
+  description: string
+  id: string
+  location: string
+  payRange: string
+  remote: string
+  title: string
+  type: string
+}
 
-let SearchedJobList = (props) => {
+interface Attributes {
+  title: string
+  location: string
+  remote: boolean
+  shortTerm: boolean
+  partTime: boolean
+  fullTime: boolean
+}
+
+interface Props {
+  handleJobSelect: Function
+  attributes: Attributes
+}
+
+interface Page {
+  selected: number
+}
+
+const perPage: number = 10;
+
+const SearchedJobList: React.FC<Props> = (props) => {
 
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -37,15 +66,15 @@ let SearchedJobList = (props) => {
   if (loading) { return <p>Loading...</p> };
   if (error) { return error.message };
 
-  const offset = currentPage * perPage;
+  const offset: number = currentPage * perPage;
 
-  const currentPageData = data.searchedJobs.slice(offset, offset + perPage).map((job, index) => (
+  const currentPageData = data.searchedJobs.slice(offset, offset + perPage).map((job: Job, index: number) => (
     <JobListItem job={job} key={job.title + index} handleJobSelect={props.handleJobSelect} id={job.id} />
   ));
 
-  const pageCount = Math.ceil(data.searchedJobs.length / perPage);
+  const pageCount: number = Math.ceil(data.searchedJobs.length / perPage);
 
-  function handlePageClick({ selected: selectedPage }) {
+  function handlePageClick({ selected: selectedPage }: Page): void {
     setCurrentPage(selectedPage);
   }
 
@@ -66,6 +95,8 @@ let SearchedJobList = (props) => {
         nextLinkClassName={"pagination__link"}
         disabledClassName={"pagination__link--disabled"}
         activeClassName={"pagination__link--active"}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={3}
       />
     </div>
   )
