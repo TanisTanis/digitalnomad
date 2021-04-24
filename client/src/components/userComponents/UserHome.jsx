@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import Home from '../Home';
-import UserHomePage from './UserHomePage';
-import ScheduleForm from './ScheduleForm';
+import React from 'react';
+import UserHomePage from './UserHomePage.tsx';
+import ScheduleForm from './ScheduleForm.tsx';
 
 class UserHome extends React.Component {
   constructor(props) {
@@ -29,6 +28,7 @@ class UserHome extends React.Component {
     if (this.state.page === 'set-schedule') {
       return <ScheduleForm email={this.props.email}/>
     }
+    return <p>An error was encountered, please restart the application.</p>
   }
 
   render() {

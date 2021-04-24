@@ -2,6 +2,25 @@ import React, { useEffect } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import dateFormat from 'dateformat';
 
+// interface userSchedule {
+//   location: string;
+//   timeZone: string;
+//   date: Date;
+//   indefinitely: boolean;
+// }
+
+// interface userData {
+//   firstName: string;
+//   lastName: string;
+//   phone: string;
+//   company: string;
+//   schedule: userSchedule;
+// }
+
+// interface userVars {
+//   email: string;
+// }
+
 const GET_USER = gql`
   query($email: String!) {
     user(email: $email) {
@@ -19,9 +38,15 @@ const GET_USER = gql`
   }
 `;
 
-let UserHomePage = (props) => {
+interface Props {
+  email: string
+}
 
-  const { loading, error, data, refetch } = useQuery(GET_USER, {variables: {email: props.email}});
+const UserHomePage: React.FC<Props> = ({ email }) => {
+
+  const { loading, error, data, refetch } = useQuery(
+    GET_USER,
+    {variables: {email: email}});
 
   useEffect(() => {
     refetch();
@@ -54,7 +79,7 @@ let UserHomePage = (props) => {
             <span className="full-name">Full Name: {data.user.firstName} {data.user.lastName}</span>
           </div>
           <div className="user-info-div">
-            <span>Email: {props.email}</span>
+            <span>Email: {email}</span>
           </div>
           <div className="user-info-div">
             <span>Phone: {data.user.phone}</span>
@@ -69,6 +94,7 @@ let UserHomePage = (props) => {
       </div>
     )
   }
+  return null;
 }
 
 export default UserHomePage;

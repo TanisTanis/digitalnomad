@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
-import dateFormat from 'dateformat';
 
 const ADD_SCHEDULE = gql`
   mutation addUserSchedule($email: String!, $location: String!, $date: Date, $indefinitely: Boolean!, $timeZone: String!) {
@@ -8,7 +7,11 @@ const ADD_SCHEDULE = gql`
   }
 `;
 
-const ScheduleForm = (props) => {
+interface Props {
+  email: string
+}
+
+const ScheduleForm: React.FC<Props> = ({ email }) => {
   const [location, setLocation] = useState('');
   const [timeZone, setTimeZone] = useState('UTC -8H (PST)');
   const [length, setLength] = useState('1');
@@ -19,48 +22,50 @@ const ScheduleForm = (props) => {
 
   const [addSchedule, { data }] = useMutation(ADD_SCHEDULE);
 
-  function Indefinitely(e) {
+  function Indefinitely(): void {
     if (!indefinitely) {
-      document.getElementById('length-select').setAttribute('disabled', true);
-      document.getElementById('dwmy-select').setAttribute('disabled', true);
+      document.getElementById('length-select')?.setAttribute('disabled', "true");
+      document.getElementById('dwmy-select')?.setAttribute('disabled', "true");
     }
     if (indefinitely) {
-      document.getElementById('length-select').removeAttribute('disabled');
-      document.getElementById('dwmy-select').removeAttribute('disabled');
+      document.getElementById('length-select')?.removeAttribute('disabled');
+      document.getElementById('dwmy-select')?.removeAttribute('disabled');
     }
     setIndefinitely(!indefinitely);
   }
 
-  function parseDate() {
+  function parseDate(): number | void {
     if (!indefinitely) {
-      let newDate = new Date();
-      let dayCount = 0;
+      let newDate: Date | number = new Date();
+      let dayCount: number = 0;
+      let newLength: number = Number(length);
 
       if (time === 'day(s)') {
-        dayCount += length;
+        dayCount += newLength;
       }
       if (time === 'week(s)') {
-        dayCount += length * 7;
+        dayCount += newLength * 7;
       }
       if (time === 'month(s)') {
-        dayCount += length * 30;
+        dayCount += newLength * 30;
       }
       if (time === 'year(s)') {
-        dayCount += length * 365;
+        dayCount += newLength * 365;
       }
       newDate = newDate.setDate(newDate.getDate() + dayCount);
       return newDate;
     }
   }
 
-  function scheduleSubmit() {
+  function scheduleSubmit(): void {
 
     if (location !== '') {
-      addSchedule({ variables: { email: props.email, location: location, date: parseDate(), indefinitely: indefinitely, timeZone: timeZone } })
-        .then((res) => {
+      addSchedule({ variables: { email: email, location: location, date: parseDate(), indefinitely: indefinitely, timeZone: timeZone } })
+        .then(() => {
           setUpdated(true);
           setIncomplete(false);
-          document.getElementById('schedule-form').reset();
+          let form = document.getElementById('schedule-form') as HTMLFormElement;
+          form.reset();
         })
         .catch((err) => {
           console.log(err);
