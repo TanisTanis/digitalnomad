@@ -10,6 +10,7 @@ interface Props {
   job: Job
   id: string
   switchToSingleJob: Function
+  key: string
 }
 
 const CompanyJob: React.FC<Props> = (props) => {

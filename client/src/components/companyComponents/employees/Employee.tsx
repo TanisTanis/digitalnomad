@@ -1,6 +1,19 @@
 import React from 'react';
 
-const Employee = (props) => {
+interface Employee {
+  firstName: string
+  lastName: string
+  location: string
+  phone: string
+  email: string
+}
+
+interface Props {
+  employee: Employee
+  key: string
+}
+
+const Employee: React.FC<Props> = (props) => {
 
   return(
     <div className="employee-div">

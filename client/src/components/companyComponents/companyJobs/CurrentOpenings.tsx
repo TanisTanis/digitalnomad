@@ -56,7 +56,7 @@ const CurrentOpenings: React.FC<Props> = (props) => {
   const offset: number = currentPage * perPage;
 
   const currentPageData = data.job.length >= 1 ? jobSearcher().slice(offset, offset + perPage).map((job: Job) => (
-    <CompanyJob job={job} key={job + job.id} id={job.id} switchToSingleJob={props.switchToSingleJob} />
+    <CompanyJob job={job} key={job.title + job.id} id={job.id} switchToSingleJob={props.switchToSingleJob} />
   )) : <p>No employees matching this description</p>;
 
   const pageCount = Math.ceil(data.job.length / perPage);

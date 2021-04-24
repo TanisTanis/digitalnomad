@@ -1,28 +1,44 @@
 import React, { useState } from 'react';
-import { useQuery, gql } from '@apollo/client';
-import Employee from './Employee';
+import Employee from './Employee.tsx';
 import ReactPaginate from 'react-paginate';
+// import Employee from './Employee';
 
-const perPage = 5;
+const perPage: number = 5;
 
-const EmployeeList = (props) => {
+interface EmployeeObj {
+  email: string
+  firstName: string
+  lastName: string
+  location: string
+  phone: string
+}
+
+interface Props {
+  employees: Employee[]
+}
+
+interface Page {
+  selected: number
+}
+
+const EmployeeList: React.FC<Props> = (props) => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
 
-  const offset = currentPage * perPage;
+  const offset: number = currentPage * perPage;
 
-  const currentPageData = pageDataHandler().length >= 1 ? pageDataHandler().slice(offset, offset + perPage).map((employee, index) => (
+  const currentPageData = pageDataHandler().length >= 1 ? pageDataHandler().slice(offset, offset + perPage).map((employee: EmployeeObj, index: number) => (
     <Employee employee={employee} key={employee.lastName + index}/>
   )) : <p>No employees matching the current description.</p>;
 
-  function nameHandler(employee) {
+  function nameHandler(employee: EmployeeObj): boolean {
     let fullName = `${employee.firstName} ${employee.lastName}`;
     return fullName.toLowerCase().indexOf(name.toLowerCase()) !== -1;
   }
 
-  function pageDataHandler() {
+  function pageDataHandler(): EmployeeObj[] {
     let employees = props.employees;
 
     if (name !== '') {
@@ -34,9 +50,9 @@ const EmployeeList = (props) => {
     return employees;
   }
 
-  const pageCount = Math.ceil(props.employees.length / perPage);
+  const pageCount: number = Math.ceil(props.employees.length / perPage);
 
-  function handlePageClick({ selected: selectedPage }) {
+  function handlePageClick({ selected: selectedPage }: Page): void {
     setCurrentPage(selectedPage);
   }
 
@@ -65,6 +81,8 @@ const EmployeeList = (props) => {
           nextLinkClassName={"pagination__link"}
           disabledClassName={"pagination__link--disabled"}
           activeClassName={"pagination__link--active"}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={3}
         />
       </div>
     </div>
