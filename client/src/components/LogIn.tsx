@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-let LogIn = (props) => {
+interface Props {
+  login: Function
+  companyLogin: Function
+}
+
+const LogIn: React.FC<Props> = (props) => {
 
   const [email, setEmail] = useState('');
   const [companyEmail, setCompanyEmail] = useState('');

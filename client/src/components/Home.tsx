@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import JobList from './jobs/JobList.tsx';
 import SearchedJobList from './jobs/SearchedJobList.tsx';
 
-let Home = (props) => {
+interface Props {
+  handleJobSelect: Function
+}
+
+const Home: React.FC<Props> = (props) => {
 
   const [search, setSearch] = useState(false);
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [remoteOnly, setRemoteOnly] = useState(false);
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(Infinity);
+  const [min, setMin] = useState('0');
+  const [max, setMax] = useState('Infinity');
   const [fullTime, setFullTime] = useState(true);
   const [partTime, setPartTime] = useState(true);
   const [shortTerm, setShortTerm] = useState(true);
@@ -29,9 +33,10 @@ let Home = (props) => {
       }
       return <SearchedJobList handleJobSelect={props.handleJobSelect} attributes={attributes} />;
     }
+    return <p>An error has occurred, please refresh the page.</p>
   }
 
-  function searchHandler(boolean) {
+  function searchHandler(boolean: boolean): void {
     if (boolean) {
       setSearch(true);
     }
@@ -78,11 +83,11 @@ let Home = (props) => {
             <div className="search-div-e">
               <label htmlFor="minpi">Min</label>
               {' '}
-              <input type="text" id="minpi" size="3" maxLength="3" onChange={(e) => {
+              <input type="text" id="minpi" size={3} maxLength={3} onChange={(e) => {
                 setMin(e.target.value);
               }}></input>
               <span> - </span>
-              <input type="text" id="maxpi" size="3" maxLength="3" onChange={(e) => {
+              <input type="text" id="maxpi" size={3} maxLength={3} onChange={(e) => {
                 setMax(e.target.value);
               }}></input>
               {' '}
@@ -125,7 +130,8 @@ let Home = (props) => {
             <div className="search-div-r">
               <button type="button" className="search-button" onClick={() => {
                 searchHandler(false);
-                document.getElementById('search-form').reset();
+                let form = document.getElementById('search-form') as HTMLFormElement;
+                form.reset();
               }}>Show All</button>
             </div>
           </div>

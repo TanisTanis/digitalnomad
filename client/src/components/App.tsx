@@ -1,13 +1,13 @@
 import React from 'react';
-import { ApolloClient, InMemoryCache, gql, ApolloProvider, createHttpLink } from '@apollo/client';
-import Home from './Home';
-import LogIn from './LogIn';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, ApolloLink } from '@apollo/client';
+import Home from './Home.tsx';
+import LogIn from './LogIn.tsx';
 import EarthPic from './EarthPic';
 import UserHome from './userComponents/UserHome.tsx';
 import CompanyHome from './companyComponents/CompanyHome.tsx';
 import SingleListing from './jobs/SingleListing.tsx';
 
-const link = createHttpLink({
+const link: ApolloLink = createHttpLink({
   uri: '/graphql',
   credentials: 'same-origin'
 });
@@ -17,10 +17,19 @@ const client = new ApolloClient({
   link,
 });
 
-class App extends React.Component {
+interface Props {}
 
-  constructor(props) {
-    super(props);
+interface State {
+  page: string
+  email: string
+  companyEmail: string
+  currentJob: string
+}
+
+class App extends React.Component<Props, State> {
+
+  constructor(props: Props) {
+    super(props)
 
     this.state = {
       page: 'home',
@@ -36,28 +45,28 @@ class App extends React.Component {
     this.handleJobSelect = this.handleJobSelect.bind(this);
   }
 
-  handleUserLogin(email) {
+  handleUserLogin(email: string) {
     this.setState({
       page: 'user-home',
       email: email,
     })
   }
 
-  handleCompanyLogin(email) {
+  handleCompanyLogin(email: string) {
     this.setState({
       page: 'company-home',
       companyEmail: email,
     });
   }
 
-  handleJobSelect(jobId) {
+  handleJobSelect(jobId: string) {
     this.setState({
       page: 'single-job',
       currentJob: jobId
     });
   }
 
-  changeFormat(format) {
+  changeFormat(format: string) {
     this.setState({
       page: format,
     })
@@ -79,7 +88,7 @@ class App extends React.Component {
     if (this.state.page === 'single-job' && this.state.currentJob !== '') {
       return <SingleListing id={this.state.currentJob} changeFormat={this.changeFormat}/>
     }
-
+    return <p>An error has occurred, please refresh the page.</p>
   }
 
   render() {
