@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
-import CompanyJob from './CompanyJob';
+import CompanyJob from './CompanyJob.tsx';
 import ReactPaginate from 'react-paginate';
 
 const GET_OPENINGS = gql`

@@ -1,6 +1,18 @@
 import React from 'react';
 
-const CompanyJob = (props) => {
+interface Job {
+  title: string
+  location: string
+  payRange: string
+}
+
+interface Props {
+  job: Job
+  id: string
+  switchToSingleJob: Function
+}
+
+const CompanyJob: React.FC<Props> = (props) => {
   return (
     <div className="job-listing-div">
       <section className="company-job-container">

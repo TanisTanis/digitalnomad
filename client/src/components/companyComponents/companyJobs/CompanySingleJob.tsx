@@ -15,13 +15,28 @@ const GET_JOB = gql`
   }
 `;
 
-const CompanySingleJob = (props) => {
+interface Props {
+  id: string
+  backToJobs: Function
+}
+
+interface Job {
+  title: string
+  company: string
+  location: string
+  remote: boolean
+  type: string
+  payRange: string
+  description: string
+}
+
+const CompanySingleJob: React.FC<Props> = (props) => {
 
   const { loading, error, data } = useQuery(GET_JOB, {variables: {id: props.id}});
 
   if (loading) { return <p>Loading...</p> }
   if (error) { return <p>{error.message}</p> }
-  const job = data.singleJob[0];
+  const job: Job = data.singleJob[0];
 
   return(
     <div className="sld">

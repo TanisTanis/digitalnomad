@@ -4,7 +4,7 @@ import CompanyHomePage from './CompanyHomePage';
 import EmployeeList from './employees/EmployeeList';
 import CurrentOpenings from './companyJobs/CurrentOpenings';
 import JobPosting from './JobPosting';
-import CompanySingleJob from './companyJobs/CompanySingleJob';
+import CompanySingleJob from './companyJobs/CompanySingleJob.tsx';
 
 const GET_COMPANY = gql`
   query($companyEmail: String!) {
