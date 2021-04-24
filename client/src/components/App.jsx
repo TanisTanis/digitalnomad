@@ -4,7 +4,7 @@ import Home from './Home';
 import LogIn from './LogIn';
 import EarthPic from './EarthPic';
 import UserHome from './userComponents/UserHome.tsx';
-import CompanyHome from './companyComponents/CompanyHome';
+import CompanyHome from './companyComponents/CompanyHome.tsx';
 import SingleListing from './jobs/SingleListing.tsx';
 
 const link = createHttpLink({

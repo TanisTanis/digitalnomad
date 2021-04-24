@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
-import CompanyHomePage from './CompanyHomePage';
+import CompanyHomePage from './CompanyHomePage.tsx';
 import EmployeeList from './employees/EmployeeList.tsx';
 import CurrentOpenings from './companyJobs/CurrentOpenings.tsx';
-import JobPosting from './JobPosting';
+import JobPosting from './JobPosting.tsx';
 import CompanySingleJob from './companyJobs/CompanySingleJob.tsx';
 
 const GET_COMPANY = gql`
@@ -21,7 +21,11 @@ const GET_COMPANY = gql`
   }
 `;
 
-let CompanyHome = (props) => {
+interface Props {
+  email: string
+}
+
+const CompanyHome: React.FC<Props> = (props) => {
 
   function companyPageFormatter() {
     if (page === 'home') {
@@ -39,14 +43,15 @@ let CompanyHome = (props) => {
     if (page === 'single-job') {
       return <CompanySingleJob id={job} backToJobs={backToJobs}/>
     }
+    return <p>An error has occurred, please refresh the page.</p>
   }
 
-  function switchToSingleJob(id) {
+  function switchToSingleJob(id: string): void {
     setJob(id);
     setPage('single-job');
   }
 
-  function backToJobs() {
+  function backToJobs(): void {
     setPage('openings');
   }
 

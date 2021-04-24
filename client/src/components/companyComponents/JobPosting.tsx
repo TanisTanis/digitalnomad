@@ -7,7 +7,11 @@ const ADD_JOB = gql`
   }
 `;
 
-const JobPosting = (props) => {
+interface Props {
+  name: string
+}
+
+const JobPosting: React.FC<Props> = (props) => {
 
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
@@ -18,14 +22,15 @@ const JobPosting = (props) => {
   const [incomplete, setIncomplete] = useState(false);
   const [jobPosted, setJobPosted] = useState(false);
 
-  const [addJob, { data }] = useMutation(ADD_JOB);
+  const [addJob] = useMutation(ADD_JOB);
 
-  function jobCreation() {
+  function jobCreation(): void {
 
     if (completeFormCheck()) {
       addJob({variables: {company: props.name, title: title, location: location, remote: remote, type: jobType, payRange: pay, description: description}})
         .then(() => {
-          document.getElementById('job-form').reset();
+          let form = document.getElementById('job-form') as HTMLFormElement;
+          form.reset();
           setJobPosted(true);
           setIncomplete(false);
           fullStateReset();
@@ -38,14 +43,14 @@ const JobPosting = (props) => {
     }
   }
 
-  function completeFormCheck() {
+  function completeFormCheck(): boolean {
     if (title !== '' && location !== '' && jobType !== '' && description !== '') {
       return true;
     }
     return false;
   }
 
-  function fullStateReset() {
+  function fullStateReset(): void {
     setTitle('');
     setLocation('');
     setRemote('no');
@@ -125,7 +130,7 @@ const JobPosting = (props) => {
             <label htmlFor="jpd">Description</label>
           </div>
           <div className="jp-div">
-            <textarea id="jpd" rows="10" cols="50" onChange={(e) => {
+            <textarea id="jpd" rows={10} cols={50} onChange={(e) => {
               setDescription(e.target.value);
             }}></textarea>
           </div>

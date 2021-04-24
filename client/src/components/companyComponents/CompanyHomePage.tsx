@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { useQuery, gql } from '@apollo/client';
+import React from 'react';
 import WorldMap from './WorldMap';
 
-const CompanyHomePage = (props) => {
+interface Props {
+  employeeCount: number
+  name: string
+}
+
+const CompanyHomePage: React.FC<Props> = (props) => {
 
   return (
     <div className="company-home-page">
