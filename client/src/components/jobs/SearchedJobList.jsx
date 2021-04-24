@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
-import JobListItem from './JobListItem';
+import JobListItem from './JobListItem.tsx';
 import ReactPaginate from 'react-paginate';
 
 const SEARCH_JOBS_QUERY = gql`

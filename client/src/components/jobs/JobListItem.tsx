@@ -1,6 +1,23 @@
 import React from 'react';
 
-let JobListItem = (props) => {
+interface Job {
+  company: string
+  description: string
+  id: string
+  location: string
+  payRange: string
+  remote: string
+  title: string
+  type: string
+}
+
+interface Props {
+  job: Job
+  id: string
+  handleJobSelect: Function
+}
+
+const JobListItem: React.FC<Props> = (props) => {
 
   return (
     <div className="job-listing-div">
