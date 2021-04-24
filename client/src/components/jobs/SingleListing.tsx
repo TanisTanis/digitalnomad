@@ -15,7 +15,12 @@ const JOB_LISTING = gql`
   }
 `;
 
-let SingleListing = (props) => {
+interface Props {
+  changeFormat: Function
+  id: String
+}
+
+const SingleListing: React.FC<Props> = (props) => {
 
   const { loading, error, data } = useQuery(JOB_LISTING, {variables: {id: props.id}});
 
