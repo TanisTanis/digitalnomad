@@ -2,8 +2,17 @@ import React from 'react';
 import UserHomePage from './UserHomePage.tsx';
 import ScheduleForm from './ScheduleForm.tsx';
 
-class UserHome extends React.Component {
-  constructor(props) {
+interface Props {
+  email: string
+  changeFormat: Function
+}
+
+interface State {
+  page: string
+}
+
+class UserHome extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -15,13 +24,13 @@ class UserHome extends React.Component {
   }
 
 
-  changePage(page) {
+  changePage(page: string): void {
     this.setState({
       page: page
     });
   }
 
-  userPageFormatter() {
+  userPageFormatter(): UserHomePage | ScheduleForm | HTMLHtmlElement {
     if (this.state.page === 'home') {
       return <UserHomePage email={this.props.email}/>
     }

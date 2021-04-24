@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache, gql, ApolloProvider, createHttpLink } from
 import Home from './Home';
 import LogIn from './LogIn';
 import EarthPic from './EarthPic';
-import UserHome from './userComponents/UserHome';
+import UserHome from './userComponents/UserHome.tsx';
 import CompanyHome from './companyComponents/CompanyHome';
 import SingleListing from './jobs/SingleListing';
 
